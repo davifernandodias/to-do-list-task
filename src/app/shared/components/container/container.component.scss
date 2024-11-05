@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.container {
+  position: relative;  /* Necessário para que o posicionamento absoluto funcione dentro do contêiner */
+}
+
+.circle-container {
+  width: 1430px;
+  height: 1430px;
+  background-color: #057CD8;
+  border-radius: 50%;
+  position: absolute;  /* Posicionamento absoluto */
+  top: -520px;  /* Coloca o círculo abaixo do contêiner */
+  left: 240px;  /* Centraliza horizontalmente */
+  z-index: -1;
+  transform: translateX(-50%);  /* Ajusta para garantir centralização exata */
+}
+
+.title{
+  position: relative;
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 20px; /* Espaçamento de 2px entre as letras */
+  left: 120px;
+  color: white;
+  font-size: 105px;
+  top: 180px;
+}
+
+.title-two{
+  position: relative;
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 15px; /* Espaçamento de 2px entre as letras */
+  color: white;
+  left: 120px;
+  font-size: 105px;
+  top: 270px;
+}
+
+.button {
+  position: relative;
+  background-color: #280A51;
+  width: 450px;
+  height: 110px;
+  border-radius: 143px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza o conteúdo do botão */
+  left: 690px;
+  top: -350px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; /* Transição suave para o efeito */
+}
+
+.button:hover {
+  background-color: #6A0DAD; /* Cor ao passar o mouse */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Sombra ao passar o mouse */
+  transform: translateY(-5px); /* Movimento suave para cima */
+}
+
+p {
+  position: relative;
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: 39px;
+  left: -50px;
+  top: 5px;
+}
+
+.arrow-img {
+  position: relative;
+  left: 50px;
+}
+
+.illustre-img {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  left: 1320px;
+  top: 90px;
+  animation: float 3s ease-in-out infinite; /* Animação de flutuação */
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0); /* Posição inicial */
+  }
+  50% {
+    transform: translateY(-15px); /* Movimento para cima */
+  }
+  100% {
+    transform: translateY(0); /* Retorna à posição inicial */
+  }
+}
