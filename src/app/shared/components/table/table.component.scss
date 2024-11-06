@@ -1,0 +1,116 @@
+/*   color variables */
+$clr-primary: #81d4fa;
+$clr-primary-light: #e1f5fe;
+$clr-primary-dark: #4fc3f7;
+$clr-gray100: #f9fbff;
+$clr-gray150: #f4f6fb;
+$clr-gray200: #eef1f6;
+$clr-gray300: #e1e5ee;
+$clr-gray400: #767b91;
+$clr-gray500: #4f546c;
+$clr-gray600: #2a324b;
+$clr-gray700: #161d34;
+$clr-pending: #fff0c2;
+$clr-pending-font: #a68b00;
+$clr-unpaid: #ffcdd2;
+$clr-unpaid-font: #c62828;
+$clr-paid: #c8e6c9;
+$clr-paid-font: #388e3c;
+$clr-link: #2962ff;
+
+/*   border radius */
+$radius: 0.2rem;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  position: relative;
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px $clr-gray300;
+  background-color: white;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  left: 40px;
+  top: 55px;
+
+  thead {
+    box-shadow: 0 5px 10px $clr-gray300;
+  }
+
+  th {
+    padding: 1rem 2.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+
+  }
+
+  td {
+    padding: 1rem 2rem;
+    white-space: nowrap;
+  }
+
+  .status {
+    border-radius: $radius;
+    padding: 0.2rem 1rem;
+    text-align: center;
+
+    &-pending {
+      background-color: $clr-pending;
+      color: $clr-pending-font;
+    }
+
+    &-paid {
+      background-color: $clr-paid;
+      color: $clr-paid-font;
+    }
+
+    &-unpaid {
+      background-color: $clr-unpaid;
+      color: $clr-unpaid-font;
+    }
+  }
+
+  .amount {
+    text-align: right;
+  }
+
+  tr:nth-child(even) {
+    background-color: $clr-gray150;
+  }
+}
+
+// Paginação
+.pagination-controls {
+  margin-top: 1rem;
+  text-align: center;
+
+  button {
+    padding: 0.5rem 1rem;
+    background-color: $clr-primary;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0.5rem;
+
+    &:hover {
+      background-color: $clr-primary-dark;
+    }
+
+    &:disabled {
+      background-color: $clr-gray300;
+      cursor: not-allowed;
+    }
+  }
+}
