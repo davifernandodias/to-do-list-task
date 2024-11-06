@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+
 .container {
   position: relative;
 }
@@ -13,7 +14,7 @@
   top: -520px;
   left: 230px;
   transform: translateX(-50%);
-  z-index: -1;
+  z-index: 1;
   transition: all 1.5s ease-in-out;
 }
 
@@ -66,6 +67,7 @@
   justify-content: center;
   left: 690px;
   top: -350px;
+  z-index: 100000000000;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -132,4 +134,38 @@ p {
   100% {
     transform: translateY(0);
   }
+}
+.app-task {
+  opacity: 0; /* Começa invisível */
+  transform: translateX(100%);  /* Começa fora da tela à direita */
+  transform: translateY(50%);  /* Começa fora da tela à direita */
+  transition: opacity 50s ease, transform 50s ease; /* Anima a opacidade e o movimento */
+}
+
+.app-task.visible {
+  opacity: 1; /* Torna visível */
+  transform: translateX(0); /* Move para a posição original */
+}
+
+/* Animação suave usando @keyframes (opcional, caso queira um efeito mais controlado) */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%) translateY(100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0) translateY(0); /* Meio da animação: posição final, totalmente visível */
+  }
+  80% {
+    opacity: 1; /* Mantém visível por mais tempo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.app-task {
+  animation: slideIn 5s ease-out forwards; /* Animação suave com atraso */
 }
