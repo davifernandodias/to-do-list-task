@@ -12,19 +12,13 @@ export class ContainerComponent {
 
   isCircleMoved = false;
   isButtonShrunk = false;
+  isIllustreFaded = false;
 
   constructor(private renderer: Renderer2) {}
 
-
-  isIllustreFaded = false;
-
-
   toggleIllustreFade() {
     this.isIllustreFaded = !this.isIllustreFaded;
-
     const illustreImg = document.querySelector('.illustre-img');
-
-
     if (illustreImg) {
       if (this.isIllustreFaded) {
         this.renderer.addClass(illustreImg, 'fade-out');
@@ -34,29 +28,25 @@ export class ContainerComponent {
     }
   }
 
-
   moveCircleAndShrinkButton() {
-
     this.isCircleMoved = !this.isCircleMoved;
     this.isButtonShrunk = !this.isButtonShrunk;
-
 
     const circleContainer = document.querySelector('.circle-container');
     const button = document.querySelector('.button');
 
-
+    // Move circle and shrink button
     if (circleContainer) {
       if (this.isCircleMoved) {
         this.renderer.addClass(circleContainer, 'move-center');
         setTimeout(() => {
           this.renderer.removeClass(circleContainer, 'move-center');
           this.renderer.addClass(circleContainer, 'move-expanded');
-        }, 1000);
+        }, 1000); // Delay de 1 segundo para a animação
       } else {
         this.renderer.removeClass(circleContainer, 'move-expanded');
       }
     }
-
 
     if (button) {
       if (this.isButtonShrunk) {
@@ -65,5 +55,8 @@ export class ContainerComponent {
         this.renderer.removeClass(button, 'shrink');
       }
     }
+
+    // Chama a função de fade-out na imagem
+    this.toggleIllustreFade();
   }
 }

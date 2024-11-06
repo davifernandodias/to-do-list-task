@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-
-
 .container {
   position: relative;
-
 }
 
 .circle-container {
@@ -40,7 +37,6 @@
   position: relative;
   font-family: "Roboto", serif;
   font-weight: 700;
-  font-style: normal;
   letter-spacing: 20px;
   left: 120px;
   color: white;
@@ -52,7 +48,6 @@
   position: relative;
   font-family: "Roboto", serif;
   font-weight: 700;
-  font-style: normal;
   letter-spacing: 15px;
   color: white;
   left: 120px;
@@ -87,6 +82,7 @@
   border-radius: 50%;
   opacity: 0;
   transition: all 0.5s ease-in-out;
+  pointer-events: none; /* Impede o clique enquanto encolhe */
 }
 
 .button.shrink p,
@@ -100,7 +96,6 @@ p {
   position: relative;
   font-family: "Roboto", serif;
   font-weight: 700;
-  font-style: normal;
   color: white;
   font-size: 39px;
   left: -50px;
