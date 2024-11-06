@@ -1,29 +1,94 @@
-<div class="table-container" (scroll)="onScroll($event)">
-  <table>
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Cost</th>
-        <th>Max date</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of displayedRows">
-        <td>{{ row.id }}</td>
-        <td>{{ row.name }}</td>
-        <td class="amount">{{ row.cost | currency: 'BRL' }}</td>
-        <td>
-          <p class="status" [ngClass]="getStatusClass(row.status)">
-            {{ row.status }}
-          </p>
-        </td>
-        <td>
-          <button class="edit-btn">Edit</button>
-          <button class="delete-btn">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Invoice</th>
+      <th>Company</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#">INV__1001</a></td>
+      <td>Paragon</td>
+      <td>1/5/2021</td>
+      <td>
+        <p class="status status-unpaid">Unpaid</p>
+      </td>
+      <td class="amount">$520.18</td>
+    </tr>
+    <tr>
+      <td><a href="#">INV__1002</a></td>
+      <td>Sonic</td>
+      <td>1/4/2021</td>
+      <td>
+        <p class="status status-paid">Paid</p>
+      </td>
+      <td class="amount">$415.25</td>
+    </tr>
+    <tr>
+      <td><a href="#">INV__1003</a></td>
+      <td>Innercircle</td>
+      <td>1/2/2021</td>
+      <td>
+        <p class="status status-pending">Pending</p>
+      </td>
+      <td class="amount">$1324.84</td>
+    </tr>
+    <tr>
+      <td><a href="#">INV__1004</a></td>
+      <td>Varsity Plus</td>
+      <td>12/30/2020</td>
+      <td>
+        <p class="status status-pending">Pending</p>
+      </td>
+      <td class="amount">$998.26</td>
+    </tr>
+    <tr>
+      <td><a href="#">INV__1005</a></td>
+      <td>Highlander</td>
+      <td>12/18/2020</td>
+      <td>
+        <p class="status status-paid">Paid</p>
+      </td>
+      <td class="amount">$1152.35</td>
+    </tr>
+    <tr>
+      <td><a href="#">INV__1005</a></td>
+      <td>Highlander</td>
+      <td>12/18/2020</td>
+      <td>
+        <p class="status status-paid">Paid</p>
+      </td>
+      <td class="amount">$1152.35</td>
+    </tr>
+    <tr>
+      <td><a href="#">INV__1005</a></td>
+      <td>Highlander</td>
+      <td>12/18/2020</td>
+      <td>
+        <p class="status status-paid">Paid</p>
+      </td>
+      <td class="amount">$1152.35</td>
+    </tr>
+    <tr>
+      <td><a href="#">INV__1005</a></td>
+      <td>Highlander</td>
+      <td>12/18/2020</td>
+      <td>
+        <p class="status status-paid">Paid</p>
+      </td>
+      <td class="amount">$1152.35</td>
+    </tr>
+    <tr>
+      <td><a href="#">INV__1005</a></td>
+      <td>Highlander</td>
+      <td>12/18/2020</td>
+      <td>
+        <p class="status status-paid">Paid</p>
+      </td>
+      <td class="amount">$1152.35</td>
+    </tr>
+  </tbody>
+</table>

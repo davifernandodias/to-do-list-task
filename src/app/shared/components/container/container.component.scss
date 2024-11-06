@@ -1,39 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+
+
 .container {
   position: relative;
-  /* Necessário para que o posicionamento absoluto funcione dentro do contêiner */
+
 }
 
 .circle-container {
-  width: 1430px; /* Tamanho inicial grande */
+  width: 1430px;
   height: 1430px;
   background-color: #057CD8;
   border-radius: 50%;
   position: absolute;
-  top: -520px; /* Fique fora da tela inicialmente */
-  left: 230px; /* Centraliza horizontalmente */
+  top: -520px;
+  left: 230px;
   transform: translateX(-50%);
   z-index: -1;
-  transition: all 1.5s ease-in-out; /* Transição suave para todos os efeitos */
+  transition: all 1.5s ease-in-out;
 }
 
-/* Círculo menor e centralizado */
 .circle-container.move-center {
-  width: 100px; /* Novo tamanho menor */
+  width: 100px;
   height: 100px;
-  top: 700px; /* Centraliza verticalmente */
-  left: 1100px; /* Centraliza horizontalmente */
-  transform: translate(-50%, -50%); /* Centraliza perfeitamente o círculo */
+  top: 700px;
+  left: 1100px;
+  transform: translate(-50%, -50%);
 }
 
-/* Círculo expandindo para a parte inferior direita */
 .circle-container.move-expanded {
-  width: 1430px; /* Tamanho original */
+  width: 1430px;
   height: 1430px;
-  top: 900px; /* Move para a parte inferior da tela */
-  left: 1800px; /* Move para a parte direita da tela */
-  transform: translate(-50%, -50%); /* Centraliza o círculo na nova posição */
+  top: 900px;
+  left: 1800px;
+  transform: translate(-50%, -50%);
 }
 
 .title {
@@ -81,7 +81,6 @@
   transform: translateY(-5px);
 }
 
-/* Transformação do botão */
 .button.shrink {
   width: 50px;
   height: 50px;
