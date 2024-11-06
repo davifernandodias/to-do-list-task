@@ -7,7 +7,7 @@
   background-color: #E9E9E9;
   margin: -730px 0px 0px 80px;
   border-radius: 30px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Adicionando sombra ao container */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .content-text {
@@ -33,7 +33,6 @@
 
 .title {
   color: #058AF0;
-
   position: relative;
   font-family: "Roboto", serif;
   font-weight: 900;
@@ -42,24 +41,62 @@
   top: 30px;
 }
 
-.form-send-task{
+.form-send-task {
   position: relative;
   top: 55px;
   left: 265px;
 }
 
-.input-task{
-  width: 330px;
-  height: 34px;
+.input-task {
+  width: 360px;
+  height: 40px;
   background-color: #ffffff;
-  border: none;
+  border: 2px solid #d3d3d3;
   border-radius: 10px;
+  padding: 0 15px;
+  font-size: 16px;
+  font-family: "Roboto", serif;
+  transition: all 0.3s ease;
+  margin-bottom: 35px;
 }
 
-.btn-add{
+.input-task::placeholder {
+  color: #bbb;
+  font-style: italic;
+}
+
+.input-task:focus {
+  outline: none;
+  border-color: #058AF0;
+  box-shadow: 0 0 10px rgba(5, 138, 240, 0.6);
+  background-color: #f0f9ff;
+  transform: scale(1.05);
+}
+
+.input-task:hover {
+  border-color: #058AF0;
+  box-shadow: 0 0 15px rgba(5, 138, 240, 0.4);
+}
+
+.input-task {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-add {
   position: relative;
-  top: 20px;
-  left: 620px;
+  top: -17px;
+  left: 690px;
   background-color: #058AF0;
   border-radius: 15px;
   width: 85.12px;
@@ -67,14 +104,14 @@
   border: none;
   color: white;
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.2s ease; /* Efeito de transição no click e sombra */
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .btn-add:active {
-  transform: translateY(2px); /* Efeito de "pressionamento" do botão */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra leve quando o botão é pressionado */
+  transform: translateY(2px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .btn-add:hover {
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse sobre o botão */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
