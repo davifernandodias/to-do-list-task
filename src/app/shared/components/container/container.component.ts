@@ -1,15 +1,16 @@
 import { Component, Renderer2 } from '@angular/core';
 import { TaskComponent } from "../task/task.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-container',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, CommonModule],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss'
 })
 export class ContainerComponent {
-
+  isVisible : boolean = false;
   isCircleMoved = false;
   isButtonShrunk = false;
   isIllustreFaded = false;
@@ -29,6 +30,7 @@ export class ContainerComponent {
   }
 
   moveCircleAndShrinkButton() {
+    this.isVisible = !this.isVisible;
     this.isCircleMoved = !this.isCircleMoved;
     this.isButtonShrunk = !this.isButtonShrunk;
 
