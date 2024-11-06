@@ -1,0 +1,165 @@
+/* Variáveis de cor */
+$clr-primary: #81d4fa;
+$clr-primary-light: #e1f5fe;
+$clr-primary-dark: #4fc3f7;
+$clr-gray100: #f9fbff;
+$clr-gray150: #f4f6fb;
+$clr-gray200: #eef1f6;
+$clr-gray300: #e1e5ee;
+$clr-gray400: #767b91;
+$clr-gray500: #4f546c;
+$clr-gray600: #2a324b;
+$clr-gray700: #161d34;
+$clr-pending: #fff0c2;
+$clr-pending-font: #a68b00;
+$clr-unpaid: #ffcdd2;
+$clr-unpaid-font: #c62828;
+$clr-paid: #c8e6c9;
+$clr-paid-font: #388e3c;
+$clr-link: #2962ff;
+
+$radius: 0.2rem;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos gerais do input */
+.input-searh {
+  position: relative;
+  width: 190px;
+  height: 40px;
+  background-color: #ffffff;
+  border: 2px solid #d3d3d3;
+  border-radius: 10px;
+  padding: 0 15px;
+  font-size: 15px;
+  font-family: "Roboto", serif;
+  transition: all 0.3s ease;
+  margin-bottom: 35px;
+  top: 85px;
+  left: -35px;
+  outline: none; /* Remover borda do input quando em foco */
+
+  /* Foco no input */
+  &:focus {
+    border-color: #058AF0;
+    box-shadow: 0 0 10px rgba(5, 138, 240, 0.6);
+    background-color: #f0f9ff; /* Cor de fundo quando em foco */
+    transform: scale(1.05); /* Efeito de aumento ao focar */
+  }
+
+  /* Efeito de placeholder */
+  &::placeholder {
+    position: absolute;
+    color: #bbb;
+    font-style: italic;
+    transition: all 0.3s ease;
+    left: 34px; /* Ajuste para o alinhamento do placeholder */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%);
+  }
+
+  /* Quando o input está em foco, o placeholder sobe */
+  &:focus::placeholder {
+    opacity: 0;
+    top: -15px; /* Ajuste para o placeholder subir */
+    font-size: 12px; /* Reduz o tamanho do placeholder quando sobe */
+  }
+}
+
+/* Animação para o input aparecer de forma gradual */
+.input-searh {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Ajuste na imagem para subir junto com o placeholder */
+img {
+  position: absolute; /* Para a imagem ficar sobre o input */
+  top: 327px; /* Posição inicial da imagem, centralizada verticalmente */
+  left: 60px; /* Ajuste da posição horizontal */
+  transform: translateY(-50%); /* Para centralizar verticalmente a imagem */
+  transition: all 0.3s ease;
+}
+
+/* Quando o input está em foco, a imagem sobe junto com o placeholder */
+.input-searh:focus + img {
+  opacity: 5%;
+  top: -150px /* Ajuste para a imagem subir junto com o placeholder */
+}
+
+/* Animação de fade-in para o input */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+table {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px $clr-gray300;
+  background-color: white;
+  text-align: left;
+  overflow: hidden;
+  left: 50px;
+  top: 60px;
+  max-width: 800px;
+  max-height: 1000px;
+  overflow-y: auto;
+
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 5px 10px $clr-gray300;
+    background-color: white;
+  }
+
+  th {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+
+  td {
+    padding: 1rem 2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: $clr-link;
+  }
+
+  .amount {
+    text-align: right;
+  }
+
+  tr:nth-child(even) {
+    background-color: $clr-gray150;
+  }
+
+  tbody {
+    display: block;
+    max-height: 400px;
+    overflow-y: auto; /* Ativa o scroll */
+  }
+
+  tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+}

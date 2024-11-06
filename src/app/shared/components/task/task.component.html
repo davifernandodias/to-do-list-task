@@ -1,0 +1,27 @@
+<section class="container">
+  <div class="content-text">
+    <h1 class="sub-title-decline">Application to-do-list</h1>
+    <h2 class="sub-title-decline-two">web</h2>
+    <h2 class="title">CREATE YOUR TASK</h2>
+  </div>
+  <form action="" class="form-send-task">
+    <input
+      type="text"
+      placeholder="What do you need to write down?"
+      class="input-task"
+      [(ngModel)]="taskDescription"
+      name="taskDescription"
+      required
+    >
+  </form>
+  <button class="btn-add" (click)="openModal()">ADVANCE</button>
+
+  <!-- Modal -->
+  <app-modal-register-task
+    [task]="taskDescription"
+    [isVisible]="isModalVisible"
+    (closeModal)="closeModal()">
+  </app-modal-register-task>
+
+  <app-table></app-table>
+</section>

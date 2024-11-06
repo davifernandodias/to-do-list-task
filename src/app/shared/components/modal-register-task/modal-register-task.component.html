@@ -1,0 +1,36 @@
+<div class="modal" [ngClass]="{'show': isVisible}">
+  <div class="modal-content">
+    <span class="close" (click)="onClose()">×</span>
+    <h2 class="modal-title">Register Task</h2>
+    <form>
+      <div>
+        <label for="taskDescription">Task Description:</label>
+        <input
+          type="text"
+          id="taskDescription"
+          class="input-task"
+          [value]="task"
+          disabled
+        >
+      </div>
+
+      <div>
+        <label for="amount">Cost:</label>
+        <input
+          type="number"
+          id="const"
+          class="input-task"
+        >
+      </div>
+      <div>
+        <label for="dueDate">Due Date:</label>
+        <input
+          type="date"
+          id="dueDate"
+          class="input-task"
+        >
+      </div>
+      <button class="btn-add" type="submit">Save Task</button>
+    </form>
+  </div>
+</div>
