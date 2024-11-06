@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.container {
+  position: relative;
+  width: 900px;
+  height: 850px;
+  background-color: #E9E9E9;
+  margin: -730px 0px 0px 80px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Adicionando sombra ao container */
+}
+
+.content-text {
+  text-align: center;
+}
+
+.sub-title-decline {
+  position: relative;
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
+  top: 30px;
+}
+
+.sub-title-decline-two {
+  position: relative;
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 24px;
+  top: 20px;
+}
+
+.title {
+  color: #058AF0;
+
+  position: relative;
+  font-family: "Roboto", serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 40px;
+  top: 30px;
+}
+
+.form-send-task{
+  position: relative;
+  top: 55px;
+  left: 265px;
+}
+
+.input-task{
+  width: 330px;
+  height: 34px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+}
+
+.btn-add{
+  position: relative;
+  top: 20px;
+  left: 620px;
+  background-color: #058AF0;
+  border-radius: 15px;
+  width: 85.12px;
+  height: 32.58px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease; /* Efeito de transição no click e sombra */
+}
+
+.btn-add:active {
+  transform: translateY(2px); /* Efeito de "pressionamento" do botão */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra leve quando o botão é pressionado */
+}
+
+.btn-add:hover {
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse sobre o botão */
+}

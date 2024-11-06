@@ -1,9 +1,10 @@
 import { Component, Renderer2 } from '@angular/core';
+import { TaskComponent } from "../task/task.component";
 
 @Component({
   selector: 'app-container',
   standalone: true,
-  imports: [],
+  imports: [TaskComponent],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss'
 })
@@ -38,11 +39,11 @@ export class ContainerComponent {
     // Alterna os estados do círculo e do botão
     this.isCircleMoved = !this.isCircleMoved;
     this.isButtonShrunk = !this.isButtonShrunk;
-  
+
     // Obtém os elementos do círculo e do botão
     const circleContainer = document.querySelector('.circle-container');
     const button = document.querySelector('.button');
-  
+
     // Se o círculo existir, alterna as classes para movimento
     if (circleContainer) {
       if (this.isCircleMoved) {
@@ -55,7 +56,7 @@ export class ContainerComponent {
         this.renderer.removeClass(circleContainer, 'move-expanded'); // Retorna ao estado inicial
       }
     }
-  
+
     // Se o botão existir, alterna a classe para encolher
     if (button) {
       if (this.isButtonShrunk) {
