@@ -7,15 +7,27 @@ import { Tarefa } from '../../Tarefa';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:3000/tasks';  // URL da API
-  private taskSubject = new BehaviorSubject<Tarefa[]>([]);  // Comportamento observável para as tarefas
-  tasks$ = this.taskSubject.asObservable();  // Expondo o observable
+  private apiUrl = 'http://localhost:3000/tasks';
+  private taskSubject = new BehaviorSubject<Tarefa[]>([]);
+  tasks$ = this.taskSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
   // Método para obter as tarefas
   getTasks(): Observable<Tarefa[]> {
     return this.http.get<Tarefa[]>(this.apiUrl);
+  }
+
+  // Método para verificar se uma tarefa com o mesmo nome já existe
+  checkTaskExists(taskName: string): Observable<boolean> {
+    return this.http.get<Tarefa[]>(`${this.apiUrl}?tarefaNome=${taskName}`).pipe(
+      switchMap((tasks) => {
+        return new Observable<boolean>((observer) => {
+          observer.next(tasks.length > 0); // Retorna true se existir pelo menos uma tarefa com o mesmo nome
+          observer.complete();
+        });
+      })
+    );
   }
 
   // Método para adicionar uma nova tarefa

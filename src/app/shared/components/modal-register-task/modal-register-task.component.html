@@ -2,7 +2,7 @@
   <div class="modal-content">
     <span class="close" (click)="onClose()">×</span>
     <h2 class="modal-title">Register Task</h2>
-    <form (ngSubmit)="createTask()">
+    <form #taskForm="ngForm" (ngSubmit)="createTask(taskForm)" novalidate>
       <div>
         <label for="taskDescription">Task Description:</label>
         <input
@@ -23,7 +23,11 @@
           [(ngModel)]="cost"
           name="cost"
           required
+          #costField="ngModel"
         />
+        <div *ngIf="costField.invalid && costField.touched" class="error-message">
+          Cost is required
+        </div>
       </div>
 
       <div>
@@ -35,10 +39,14 @@
           [(ngModel)]="dueDate"
           name="dueDate"
           required
+          #dueDateField="ngModel"
         />
+        <div *ngIf="dueDateField.invalid && dueDateField.touched" class="error-message">
+          Due Date is required
+        </div>
       </div>
 
-      <button class="btn-add" type="submit">Save Task</button>
+      <button class="btn-add" type="submit" [disabled]="taskForm.invalid">Save Task</button>
     </form>
   </div>
 </div>
