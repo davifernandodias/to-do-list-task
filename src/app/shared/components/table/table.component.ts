@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
   searchText: string = '';   // O texto da pesquisa
   data: Tarefa[] = [];       // Lista de todas as tarefas
   filteredTasks: Tarefa[] = []; // Tarefas filtradas
+  sortDescending: boolean = false; // Estado do checkbox
 
   constructor(private taskService: TaskService) {}
 
@@ -34,16 +35,34 @@ export class TableComponent implements OnInit {
 
   // Método para aplicar o filtro baseado no texto de pesquisa
   applyFilter() {
-    if (!this.searchText) {
-      this.filteredTasks = [...this.data]; // Se não houver pesquisa, mostra todas as tarefas
-    } else {
-      // Filtra as tarefas que contêm o texto de pesquisa
-      this.filteredTasks = this.data.filter(
-        (item) =>
-          item.tarefaNome.toLowerCase().includes(this.searchText.toLowerCase()) ||
-          (item.id && item.id.toString().includes(this.searchText))  // Inclui id, se presente
-      );
-    }
+    let filtered = this.data.filter(
+      (item) =>
+        item.tarefaNome.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        (item.id && item.id.toString().includes(this.searchText))  // Inclui id, se presente
+    );
+
+    // Aplica a ordenação com base no estado do checkbox
+    this.filteredTasks = this.sortTasks(filtered);
+  }
+
+  // Função que ordena as tarefas com base no estado do checkbox
+  sortTasks(tasks: Tarefa[]): Tarefa[] {
+    return tasks.sort((a, b) => {
+      if (this.sortDescending) {
+        // Checkbox está marcado, ordena de menor para maior (crescente)
+        return a.serialOrdernacao - b.serialOrdernacao;
+      } else {
+        // Checkbox não está marcado, ordena de maior para menor (decrescente)
+        return b.serialOrdernacao - a.serialOrdernacao;
+      }
+    });
+  }
+
+  // Método chamado quando o estado do checkbox muda
+  toggleSort(event: Event) {
+    // Atualiza o estado de sortDescending de acordo com o checkbox
+    this.sortDescending = (event.target as HTMLInputElement).checked;
+    this.applyFilter(); // Reaplica o filtro e a ordenação
   }
 
   // Método para deletar uma tarefa

@@ -56,6 +56,68 @@
 .input-searh {
   animation: fadeInUp 1s ease-in-out;
 }
+/* Estilo iOS */
+.switch__container {
+  position: fixed;
+  width: 15px;
+  left: 860px;
+  top: 315px;  /* Diminui o tamanho da área do switch */
+}
+
+.switch {
+  visibility: hidden;
+  position: absolute;
+}
+
+.switch + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.switch--shadow + label {
+  width: 70px;  /* Tamanho do switch */
+  height: 35px;  /* Tamanho da altura */
+  background-color: #dddddd;
+  border-radius: 35px;  /* Ajuste de acordo com o tamanho */
+}
+
+.switch--shadow + label:before,
+.switch--shadow + label:after {
+  display: block;
+  position: absolute;
+  top: 2px;  /* Ajuste o espaçamento superior */
+  left: 2px;  /* Ajuste o espaçamento esquerdo */
+  bottom: 2px;
+  content: "";
+}
+
+.switch--shadow + label:before {
+  right: 2px;
+  background-color: #f1f1f1;
+  border-radius: 35px;  /* Ajuste conforme o novo tamanho */
+  transition: background 0.4s;
+}
+
+.switch--shadow + label:after {
+  width: 30px;  /* Ajuste a largura do círculo deslizante */
+  height: 30px;  /* Ajuste a altura do círculo */
+  background-color: #fff;
+  border-radius: 50%;  /* Forma circular */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+
+.switch--shadow:checked + label:before {
+  background-color: #058AF0;  /* Cor quando está ativado */
+}
+
+.switch--shadow:checked + label:after {
+  transform: translateX(35px);  /* Desloca o círculo para a direita */
+}
+
 
 /* Ajuste na imagem para subir junto com o placeholder */
 img {
