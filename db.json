@@ -2,10 +2,136 @@
   "tasks": [
     {
       "id": "04ed",
-      "tarefaNome": "lavar louça",
+      "tarefaNome": "Lavar louça",
       "valor": 200,
-      "dataMaxima": "2004-08-17",
+      "dataMaxima": "2024-08-17",
       "serialOrdernacao": 1
+    },
+    {
+      "id": "05fc",
+      "tarefaNome": "Limpar a casa",
+      "valor": 150,
+      "dataMaxima": "2024-08-20",
+      "serialOrdernacao": 2
+    },
+    {
+      "id": "06ab",
+      "tarefaNome": "Comprar mantimentos",
+      "valor": 100,
+      "dataMaxima": "2024-08-22",
+      "serialOrdernacao": 3
+    },
+    {
+      "id": "07cd",
+      "tarefaNome": "Pagar contas",
+      "valor": 250,
+      "dataMaxima": "2024-08-24",
+      "serialOrdernacao": 4
+    },
+    {
+      "id": "08ef",
+      "tarefaNome": "Passar roupa",
+      "valor": 120,
+      "dataMaxima": "2024-08-25",
+      "serialOrdernacao": 5
+    },
+    {
+      "id": "09gh",
+      "tarefaNome": "Cuidar do jardim",
+      "valor": 180,
+      "dataMaxima": "2024-08-28",
+      "serialOrdernacao": 6
+    },
+    {
+      "id": "10ij",
+      "tarefaNome": "Levar o carro para revisão",
+      "valor": 500,
+      "dataMaxima": "2024-08-30",
+      "serialOrdernacao": 7
+    },
+    {
+      "id": "11kl",
+      "tarefaNome": "Limpar o banheiro",
+      "valor": 80,
+      "dataMaxima": "2024-09-01",
+      "serialOrdernacao": 8
+    },
+    {
+      "id": "12mn",
+      "tarefaNome": "Organizar escritório",
+      "valor": 220,
+      "dataMaxima": "2024-09-05",
+      "serialOrdernacao": 9
+    },
+    {
+      "id": "13op",
+      "tarefaNome": "Cuidar das plantas",
+      "valor": 70,
+      "dataMaxima": "2024-09-10",
+      "serialOrdernacao": 10
+    },
+    {
+      "id": "14qr",
+      "tarefaNome": "Fazer compras para o mês",
+      "valor": 350,
+      "dataMaxima": "2024-09-12",
+      "serialOrdernacao": 11
+    },
+    {
+      "id": "15st",
+      "tarefaNome": "Limpar o quintal",
+      "valor": 160,
+      "dataMaxima": "2024-09-15",
+      "serialOrdernacao": 12
+    },
+    {
+      "id": "16uv",
+      "tarefaNome": "Trocar as lâmpadas",
+      "valor": 50,
+      "dataMaxima": "2024-09-17",
+      "serialOrdernacao": 13
+    },
+    {
+      "id": "17wx",
+      "tarefaNome": "Arrumar o quarto",
+      "valor": 90,
+      "dataMaxima": "2024-09-20",
+      "serialOrdernacao": 14
+    },
+    {
+      "id": "18yz",
+      "tarefaNome": "Reparar vazamento",
+      "valor": 300,
+      "dataMaxima": "2024-09-22",
+      "serialOrdernacao": 15
+    },
+    {
+      "id": "19ab",
+      "tarefaNome": "Montar móveis",
+      "valor": 450,
+      "dataMaxima": "2024-09-25",
+      "serialOrdernacao": 16
+    },
+    {
+      "id": "20cd",
+      "tarefaNome": "Limpar o telhado",
+      "valor": 200,
+      "dataMaxima": "2024-09-27",
+      "serialOrdernacao": 17
+    },
+    {
+      "id": "21ef",
+      "tarefaNome": "Organizar garagem",
+      "valor": 250,
+      "dataMaxima": "2024-09-30",
+      "serialOrdernacao": 18
+    },
+    {
+      "id": "22gh",
+      "tarefaNome": "Verificar encanamento",
+      "valor": 180,
+      "dataMaxima": "2024-10-03",
+      "serialOrdernacao": 19
     }
   ]
 }

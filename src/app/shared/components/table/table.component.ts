@@ -23,7 +23,6 @@ export class TableComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    // Assinando para receber as tarefas quando forem carregadas
     this.taskService.tasks$.subscribe((tasks) => {
       this.data = tasks;
       this.applyFilter();  // Aplica o filtro logo após atualizar a lista de tarefas
@@ -52,10 +51,8 @@ export class TableComponent implements OnInit {
   sortTasks(tasks: Tarefa[]): Tarefa[] {
     return tasks.sort((a, b) => {
       if (this.sortDescending) {
-        // Checkbox está marcado, ordena de menor para maior (crescente)
         return a.serialOrdernacao - b.serialOrdernacao;
       } else {
-        // Checkbox não está marcado, ordena de maior para menor (decrescente)
         return b.serialOrdernacao - a.serialOrdernacao;
       }
     });
@@ -63,16 +60,15 @@ export class TableComponent implements OnInit {
 
   // Método chamado quando o estado do checkbox muda
   toggleSort(event: Event) {
-    // Atualiza o estado de sortDescending de acordo com o checkbox
     this.sortDescending = (event.target as HTMLInputElement).checked;
-    this.applyFilter(); // Reaplica o filtro e a ordenação
+    this.applyFilter();
   }
 
   // Método para deletar uma tarefa
   onDelete(tarefa: Tarefa) {
     this.taskService.deleteTask(tarefa).subscribe({
       next: () => {
-        this.taskService.refreshTasks();  // Atualiza as tarefas após exclusão
+        this.taskService.refreshTasks();
       },
       error: (err) => {
         console.error('Erro ao excluir tarefa:', err);

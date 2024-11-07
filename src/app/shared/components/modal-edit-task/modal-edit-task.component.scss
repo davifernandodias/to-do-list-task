@@ -30,7 +30,8 @@
   position: fixed;
   background-color: white;
   padding: 20px;
-  top: 300px;
+  top: 100px;
+  left: 300px;
   border-radius: 8px;
   width: 450px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
@@ -67,15 +68,19 @@ button {
 }
 
 .btn-save {
+  white-space: nowrap;
   background-color: #058AF0;
   color: white;
   box-shadow: 0 4px 6px rgba(5, 138, 240, 0.5);
+  position: fixed;
+  left: 330px;
 }
 
 .btn-save:hover {
   background-color: #0277BD;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(5, 138, 240, 0.7);
+
 }
 
 .btn-save:active {
@@ -84,8 +89,7 @@ button {
 }
 
 .btn-cancel {
-  position: fixed;
-  left: 380px;
+
   background-color: #e74c3c;
   color: white;
   box-shadow: 0 4px 6px rgba(231, 76, 60, 0.5);
