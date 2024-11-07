@@ -2,7 +2,7 @@
   <div class="modal-content">
     <span class="close" (click)="onClose()">×</span>
     <h2 class="modal-title">Register Task</h2>
-    <form>
+    <form (ngSubmit)="createTask()">
       <div>
         <label for="taskDescription">Task Description:</label>
         <input
@@ -11,25 +11,33 @@
           class="input-task"
           [value]="task"
           disabled
-        >
+        />
       </div>
 
       <div>
         <label for="amount">Cost:</label>
         <input
           type="number"
-          id="const"
+          id="amount"
           class="input-task"
-        >
+          [(ngModel)]="cost"
+          name="cost"
+          required
+        />
       </div>
+
       <div>
         <label for="dueDate">Due Date:</label>
         <input
           type="date"
           id="dueDate"
           class="input-task"
-        >
+          [(ngModel)]="dueDate"
+          name="dueDate"
+          required
+        />
       </div>
+
       <button class="btn-add" type="submit">Save Task</button>
     </form>
   </div>

@@ -1,5 +1,5 @@
 <!-- input de pesquisa -->
-<input type="text" class="input-searh" [(ngModel)]="searchText" placeholder="Type name task..." />
+<input type="text" class="input-searh" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Type name task..." />
 
 <img src="../../../../assets/svg/search-icon.svg" alt="search-icon">
 
@@ -11,14 +11,21 @@
       <th>Name</th>
       <th>Cost</th>
       <th>Max Date</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of filteredData()">
+    <tr *ngFor="let item of filteredTasks">
       <td><a href="#">{{ item.id }}</a></td>
-      <td>{{ item.name }}</td>
-      <td>{{ item.cost | currency:'BRL':'symbol':'1.0-0' }}</td>
-      <td>{{ item.maxDate }}</td> <!-- Exibindo maxDate como string -->
+      <td>{{ item.tarefaNome }}</td>
+      <td [ngClass]="{'highlight': item.valor > 1000}">
+        {{ item.valor | currency: 'BRL' : 'symbol' : '1.0-0' }}
+      </td>
+      <td>{{ item.dataMaxima }}</td>
+      <td>
+        <button class="action">edit</button>
+        <button class="action" (click)="onDelete(item)">delete</button>
+      </td>
     </tr>
   </tbody>
 </table>

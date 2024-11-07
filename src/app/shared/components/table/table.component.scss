@@ -123,6 +123,15 @@ table {
     color: $clr-link;
   }
 
+  /* Definindo a classe 'highlight' para estilização chamativa */
+  .highlight {
+    color: red;
+  }
+
+  .action {
+    padding-right: 10px;
+  }
+
   .amount {
     text-align: right;
   }

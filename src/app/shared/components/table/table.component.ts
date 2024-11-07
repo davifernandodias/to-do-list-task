@@ -1,43 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TaskService } from '../../../services/task.service';
+import { Tarefa } from '../../../../Tarefa';
 
 @Component({
   selector: 'app-table',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
 })
-export class TableComponent {
-  searchText: string = '';
-  data = [
-    { id: 'INV__1001', name: 'Paragon', cost: 520.18, maxDate: '01/05/2021' },
-    { id: 'INV__1002', name: 'Sonic', cost: 415.25, maxDate: '01/04/2021' },
-    { id: 'INV__1003', name: 'Innercircle', cost: 1324.84, maxDate: '01/02/2021' },
-    { id: 'INV__1004', name: 'Varsity Plus', cost: 998.26, maxDate: '30/12/2020' },
-    { id: 'INV__1005', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1006', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1007', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' },
-    { id: 'INV__1008', name: 'Highlander', cost: 1152.35, maxDate: '18/12/2020' }
-  ];
+export class TableComponent implements OnInit {
+  searchText: string = '';   // O texto da pesquisa
+  data: Tarefa[] = [];       // Lista de todas as tarefas
+  filteredTasks: Tarefa[] = []; // Tarefas filtradas
 
-  // Função para filtrar os dados com base no texto de pesquisa
-  filteredData() {
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit(): void {
+    // Assinando para receber as tarefas quando forem carregadas
+    this.taskService.tasks$.subscribe((tasks) => {
+      this.data = tasks;
+      this.applyFilter();  // Aplica o filtro logo após atualizar a lista de tarefas
+    });
+
+    // Carregar as tarefas ao inicializar
+    this.taskService.getTasks().subscribe((tasks) => {
+      this.data = tasks;
+      this.applyFilter();  // Aplica o filtro inicial
+    });
+  }
+
+  // Método para aplicar o filtro baseado no texto de pesquisa
+  applyFilter() {
     if (!this.searchText) {
-      return this.data;
+      this.filteredTasks = [...this.data]; // Se não houver pesquisa, mostra todas as tarefas
+    } else {
+      // Filtra as tarefas que contêm o texto de pesquisa
+      this.filteredTasks = this.data.filter(
+        (item) =>
+          item.tarefaNome.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          (item.id && item.id.toString().includes(this.searchText))  // Inclui id, se presente
+      );
     }
-    return this.data.filter(item =>
-      item.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      item.id.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+  }
+
+  // Método para deletar uma tarefa
+  onDelete(tarefa: Tarefa) {
+    this.taskService.deleteTask(tarefa).subscribe({
+      next: () => {
+        this.taskService.refreshTasks();  // Atualiza as tarefas após exclusão
+      },
+      error: (err) => {
+        console.error('Erro ao excluir tarefa:', err);
+      }
+    });
   }
 }
