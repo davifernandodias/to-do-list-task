@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../../../services/task.service';
 import { Tarefa } from '../../../../Tarefa';
+import { ModalEditTaskComponent } from "../modal-edit-task/modal-edit-task.component";
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ModalEditTaskComponent],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
@@ -16,6 +17,8 @@ export class TableComponent implements OnInit {
   data: Tarefa[] = [];       // Lista de todas as tarefas
   filteredTasks: Tarefa[] = []; // Tarefas filtradas
   sortDescending: boolean = false; // Estado do checkbox
+  isEditModalVisible: boolean = false;  // Controla a visibilidade do modal de edição
+  selectedTask: Tarefa | null = null;  // Tarefa selecionada para edição
 
   constructor(private taskService: TaskService) {}
 
@@ -75,5 +78,17 @@ export class TableComponent implements OnInit {
         console.error('Erro ao excluir tarefa:', err);
       }
     });
+  }
+
+  // Método para abrir o modal de edição
+  openEditModal(task: Tarefa): void {
+    this.selectedTask = task;  // Armazena a tarefa a ser editada
+    this.isEditModalVisible = true;  // Torna o modal visível
+  }
+
+  // Método para fechar o modal de edição
+  closeEditModal(): void {
+    this.isEditModalVisible = false;  // Torna o modal invisível
+    this.selectedTask = null;  // Limpa a tarefa selecionada
   }
 }

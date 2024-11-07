@@ -1,0 +1,142 @@
+/* Efeito de fade-in suave para o modal */
+.modal-overlay {
+  position: fixed;
+  top: -200px;
+  left: 0;
+  right: 0;
+  height: 2000px;
+
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeInModal 0.5s forwards;  /* Animação de entrada suave */
+}
+
+/* Efeito de fade-in para o conteúdo */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  position: fixed;
+  background-color: white;
+  padding: 20px;
+  top: 300px;
+  border-radius: 8px;
+  width: 450px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-30px);
+  animation: slideIn 0.5s forwards;  /* Animação para suavizar a entrada do modal */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Estilo dos inputs desabilitados */
+.disabled-input {
+  opacity: 0.6;
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+/* Estilos dos botões */
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+.btn-save {
+  background-color: #058AF0;
+  color: white;
+  box-shadow: 0 4px 6px rgba(5, 138, 240, 0.5);
+}
+
+.btn-save:hover {
+  background-color: #0277BD;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(5, 138, 240, 0.7);
+}
+
+.btn-save:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(5, 138, 240, 0.5);
+}
+
+.btn-cancel {
+  position: fixed;
+  left: 380px;
+  background-color: #e74c3c;
+  color: white;
+  box-shadow: 0 4px 6px rgba(231, 76, 60, 0.5);
+}
+
+.btn-cancel:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(231, 76, 60, 0.7);
+}
+
+.btn-cancel:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.5);
+}
+
+.title{
+  color: #058AF0;
+  font-family: "Roboto", serif;
+  font-weight: 900;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* Estilo para os campos de input */
+input {
+  width: 100%;
+  height: 45px;
+  background-color: #ffffff;
+  border: 2px solid #d3d3d3;
+  border-radius: 10px;
+  padding: 0 15px;
+  font-size: 16px;
+  font-family: "Roboto", serif;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #058AF0;
+  box-shadow: 0 0 15px rgba(5, 138, 240, 0.5);
+  background-color: #f7f9ff;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+

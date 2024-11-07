@@ -7,7 +7,6 @@
   <input id="switch-shadow" class="switch switch--shadow" type="checkbox" (change)="toggleSort($event)">
   <label for="switch-shadow"></label>
 </div>
-
 <!-- Tabela -->
 <table>
   <thead>
@@ -29,10 +28,19 @@
       <td>{{ item.dataMaxima }}</td>
       <td class="d-flex gap-3">
         <div class="button-container">
-          <button class="btn btn-warning btn-sm edit-btn">Edit</button> <!-- Botão Editar -->
-          <button class="btn btn-danger btn-sm delete-btn" (click)="onDelete(item)">Delete</button> <!-- Botão Excluir -->
+          <!-- Botão Editar que chama a função openEditModal -->
+          <button class="btn btn-warning btn-sm edit-btn" (click)="openEditModal(item)">Edit</button>
+          <button class="btn btn-danger btn-sm delete-btn" (click)="onDelete(item)">Delete</button>
         </div>
       </td>
     </tr>
   </tbody>
 </table>
+
+<!-- Modal Edit Task -->
+<app-modal-edit-task
+  [task]="selectedTask"
+  [isVisible]="isEditModalVisible"
+  (closeModal)="closeEditModal()">
+</app-modal-edit-task>
+

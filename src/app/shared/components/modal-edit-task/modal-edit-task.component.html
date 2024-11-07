@@ -1,0 +1,25 @@
+<div *ngIf="isVisible" class="modal-overlay">
+  <div class="modal-content">
+    <h2 class="title">Edit Task</h2>
+
+    <form (ngSubmit)="saveChanges()">
+      <label for="taskName">Task Name:</label>
+      <input id="taskName" [(ngModel)]="task.tarefaNome" name="tarefaNome" required />
+
+      <label for="taskCost">Cost:</label>
+      <input id="taskCost" [(ngModel)]="task.valor" name="valor" type="number" required />
+
+      <label for="taskDate">Max Date:</label>
+      <input id="taskDate" [(ngModel)]="task.dataMaxima" name="dataMaxima" type="date" required />
+
+      <label for="taskId">Task ID:</label>
+      <input id="taskId" [value]="task.id" name="id" disabled class="disabled-input" />
+
+      <label for="taskSerialOrder">Serial Order:</label>
+      <input id="taskSerialOrder" [value]="task.serialOrdernacao" name="serialOrdernacao" disabled class="disabled-input" />
+
+      <button type="submit" class="btn-save">Save Changes</button>
+      <button type="button" (click)="onClose()" class="btn-cancel">Cancel</button>
+    </form>
+  </div>
+</div>
