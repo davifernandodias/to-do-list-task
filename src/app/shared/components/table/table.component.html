@@ -27,9 +27,11 @@
         {{ item.valor | currency: 'BRL' : 'symbol' : '1.0-0' }}
       </td>
       <td>{{ item.dataMaxima }}</td>
-      <td>
-        <button class="action">edit</button>
-        <button class="action" (click)="onDelete(item)">delete</button>
+      <td class="d-flex gap-3">
+        <div class="button-container">
+          <button class="btn btn-warning btn-sm edit-btn">Edit</button> <!-- Botão Editar -->
+          <button class="btn btn-danger btn-sm delete-btn" (click)="onDelete(item)">Delete</button> <!-- Botão Excluir -->
+        </div>
       </td>
     </tr>
   </tbody>

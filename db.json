@@ -1,18 +1,11 @@
 {
-  "tasks":[
+  "tasks": [
     {
-    "id": "1",
-    "tarefaNome": "jogar lixo fora",
-    "valor": "2000",
-    "dataMaxima": "06/20/2024",
-    "serialOrdernacao": "1"
-  },
-    {
-    "id": "2",
-    "tarefaNome": "jogar lixo fora",
-    "valor": "20000",
-    "dataMaxima": "06/20/2024",
-    "serialOrdernacao": "1"
-  }
-]
+      "id": "04ed",
+      "tarefaNome": "lavar louça",
+      "valor": 200,
+      "dataMaxima": "2004-08-17",
+      "serialOrdernacao": 1
+    }
+  ]
 }

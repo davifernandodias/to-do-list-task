@@ -214,3 +214,58 @@ table {
     table-layout: fixed;
   }
 }
+/* Container para os botões, utilizando flexbox para alinhamento */
+.button-container {
+  display: flex;
+  gap: 10px; /* Espaço entre os botões */
+  position: relative;
+  left: -60px;
+}
+
+/* Estilo base dos botões */
+.btn {
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; /* Transição suave */
+  border: none; /* Remover borda padrão */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.edit-btn {
+  background-color: #f39c12;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* Efeito de hover */
+.edit-btn:hover {
+  background-color: #e67e22; /* Cor mais escura para o efeito */
+  transform: translateY(-3px); /* Levanta o botão */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Sombra mais forte no hover */
+}
+
+.delete-btn:hover {
+  background-color: #c0392b; /* Cor mais escura para o efeito */
+  transform: translateY(-3px); /* Levanta o botão */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Sombra mais forte no hover */
+}
+
+/* Efeito de foco (quando o botão está em foco) */
+.edit-btn:focus, .delete-btn:focus {
+  outline: none; /* Remove o outline padrão */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Adiciona brilho ao foco */
+}
+
+/* Efeito de clique (quando pressionado) */
+.edit-btn:active, .delete-btn:active {
+  transform: translateY(1px); /* Botão "afunda" um pouco */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra mais suave ao clicar */
+}
