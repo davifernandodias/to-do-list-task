@@ -47,7 +47,7 @@ export class ModalRegisterTaskComponent {
     this.taskService.addTask(newTask).subscribe(() => {
       this.taskService.refreshTasks();  // Atualiza a lista de tarefas
       this.onClose();  // Fecha o modal
-      this.matSnackBar.open('Tarefa criada com sucesso', 'Ok', {
+      this.matSnackBar.open('Tarefa salva com sucesso', 'Ok', {
         duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'top',
