@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './container.component.scss'
 })
 export class ContainerComponent {
-  isVisible : boolean = false;
+  isVisible: boolean = false;
   isCircleMoved = false;
   isButtonShrunk = false;
   isIllustreFaded = false;
@@ -36,6 +36,8 @@ export class ContainerComponent {
 
     const circleContainer = document.querySelector('.circle-container');
     const button = document.querySelector('.button');
+    const title = document.querySelector('.title');
+    const titleTwo = document.querySelector('.title-two');
 
     // Move circle and shrink button
     if (circleContainer) {
@@ -58,7 +60,25 @@ export class ContainerComponent {
       }
     }
 
+    // Fade out the title and title-two
+    if (title && titleTwo && circleContainer) {
+      this.renderer.addClass(title, 'fade-out');
+      this.renderer.addClass(titleTwo, 'fade-out');
+      this.renderer.addClass(circleContainer, 'fade-out');
+
+      // Opcionalmente, podemos remover o z-index para "sumir" do plano
+      this.renderer.setStyle(title, 'z-index', '0');
+      this.renderer.setStyle(titleTwo, 'z-index', '0');
+     // Define um delay de 2 segundos (2000ms)
+    setTimeout(() => {
+      // Após 2 segundos, altera o 'z-index' do elemento
+      this.renderer.setStyle(circleContainer, 'z-index', '0');
+    }, 2000);
+
+    }
+
     // Chama a função de fade-out na imagem
     this.toggleIllustreFade();
   }
+
 }
