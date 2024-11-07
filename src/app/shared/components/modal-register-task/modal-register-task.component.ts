@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { TaskService } from '../../../services/task.service';
 import { Tarefa } from '../../../../Tarefa';
 import { FormsModule } from '@angular/forms';  // Importe o FormsModule
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -19,6 +20,9 @@ export class ModalRegisterTaskComponent {
 
   cost: number = 0;           // Valor da tarefa (custo)
   dueDate: string = '';       // Data de vencimento (dataMaxima)
+
+
+  matSnackBar = inject(MatSnackBar);
 
   constructor(private taskService: TaskService) {}
 
@@ -43,6 +47,12 @@ export class ModalRegisterTaskComponent {
     this.taskService.addTask(newTask).subscribe(() => {
       this.taskService.refreshTasks();  // Atualiza a lista de tarefas
       this.onClose();  // Fecha o modal
+      this.matSnackBar.open('Tarefa criada com sucesso', 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        panelClass: ['custom-snackbar']  // Adiciona a classe personalizada
+      });
     });
   }
 }
