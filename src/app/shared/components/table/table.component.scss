@@ -276,6 +276,84 @@ table {
   justify-content: center;
   align-items: center;
 }
+/* Estilos gerais da tabela */
+table {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  text-align: left;
+  max-width: 800px;
+  max-height: 1000px;
+  overflow-y: auto;
+  margin: 20px 0; /* Adicionando espaçamento */
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+
+th {
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+td {
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+/* Estilos para o item sendo arrastado */
+cdk-drag-preview {
+  /* Estilo do quadradinho arrastado */
+  width: auto;
+  height: auto;
+  background-color: #fff;
+  border: 2px solid #058AF0; /* Cor do contorno */
+  border-radius: 5px; /* Bordas arredondadas */
+  box-shadow: 0 10px 20px rgba(0, 138, 240, 0.2); /* Sombra suave */
+  transform: scale(1.05); /* Efeito de aumento */
+  transition: transform 0.3s ease; /* Transição suave ao ser arrastado */
+  z-index: 1000; /* Para garantir que fique acima dos outros itens */
+}
+
+/* Estilos para o item de drag placeholder (onde o item será colocado) */
+cdk-drag-placeholder {
+  opacity: 0.5; /* Tornando o item fantasma mais sutil */
+  background-color: #f0f9ff; /* Cor de fundo suave */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 138, 240, 0.2); /* Sombra suave */
+}
+
+cdk-drop {
+  transition: background-color 0.3s ease;
+}
+
+cdk-drop:active {
+  background-color: #eaf5ff;
+}
+
+tr.cdk-drag {
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+tr.cdk-drag-preview {
+  background-color: #f9f9f9;
+  transform: scale(1.02);
+}
+
+tr.cdk-drag-dragging {
+  transform: scale(1.02);
+}
 
 .modal-content {
   background-color: #fff;

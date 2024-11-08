@@ -13,12 +13,10 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
-  // Método para obter as tarefas
   getTasks(): Observable<Tarefa[]> {
     return this.http.get<Tarefa[]>(this.apiUrl);
   }
 
-  // Método para verificar se uma tarefa com o mesmo nome já existe
   checkTaskExists(taskName: string): Observable<boolean> {
     return this.http.get<Tarefa[]>(`${this.apiUrl}?tarefaNome=${taskName}`).pipe(
       switchMap((tasks) => {
@@ -30,7 +28,6 @@ export class TaskService {
     );
   }
 
-  // Método para adicionar uma nova tarefa
   addTask(task: Tarefa): Observable<Tarefa> {
     return this.getTasks().pipe(
       switchMap((tasks) => {
@@ -41,20 +38,26 @@ export class TaskService {
     );
   }
 
-  // Método para excluir uma tarefa
   deleteTask(tarefa: Tarefa): Observable<Tarefa> {
     return this.http.delete<Tarefa>(`${this.apiUrl}/${tarefa.id}`);
   }
 
-  // Método para atualizar uma tarefa
   updateTask(tarefa: Tarefa): Observable<Tarefa> {
     return this.http.put<Tarefa>(`${this.apiUrl}/${tarefa.id}`, tarefa);
   }
 
-  // Método para atualizar a lista de tarefas
+  updateTasksOrder(tasks: Tarefa[]): Observable<Tarefa[]> {
+    return this.http.put<Tarefa[]>(this.apiUrl, tasks).pipe(
+      switchMap(() => {
+        return this.getTasks();
+      })
+    );
+  }
+
+
   refreshTasks(): void {
     this.getTasks().subscribe((tasks) => {
-      this.taskSubject.next(tasks);  // Atualiza o valor do BehaviorSubject
+      this.taskSubject.next(tasks);
     });
   }
 }

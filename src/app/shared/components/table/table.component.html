@@ -7,7 +7,8 @@
   <label for="switch-shadow"></label>
 </div>
 <div class="title-info-ord"><img src="../../../../assets/img/ordenacao.png" alt=""></div>
-<table>
+
+<table cdkDropList (cdkDropListDropped)="drop($event)">
   <thead>
     <tr>
       <th>Id</th>
@@ -18,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of filteredTasks">
+    <tr *ngFor="let item of filteredTasks" cdkDrag [cdkDragData]="item">
       <td><a href="#">{{ item.id }}</a></td>
       <td>{{ item.tarefaNome }}</td>
       <td [ngClass]="{'highlight': item.valor >= 1000}">{{ item.valor | currency: 'BRL' : 'symbol' : '1.0-0' }}</td>

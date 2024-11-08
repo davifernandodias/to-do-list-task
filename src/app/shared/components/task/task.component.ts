@@ -12,10 +12,10 @@ import { TableComponent } from '../table/table.component';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent {
-  taskDescription: string = '';  // Variável para armazenar o texto da tarefa
-  isModalVisible: boolean = false;  // Controle de visibilidade do modal
+  taskDescription: string = '';
+  isModalVisible: boolean = false;
 
-  // Método para abrir o modal
+
   openModal(): void {
     if (this.taskDescription.trim() !== '') {
       this.isModalVisible = true;
@@ -24,9 +24,9 @@ export class TaskComponent {
     }
   }
 
-  // Método para fechar o modal
+
   closeModal(): void {
     this.isModalVisible = false;
-    this.taskDescription = '';  // Limpa a tarefa quando o modal é fechado
+    this.taskDescription = '';
   }
 }
