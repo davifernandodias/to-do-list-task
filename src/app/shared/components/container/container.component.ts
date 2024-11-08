@@ -1,12 +1,11 @@
 import { Component, Renderer2 } from '@angular/core';
 import { TaskComponent } from "../task/task.component";
 import { CommonModule } from '@angular/common';
-import { ModalComponent } from "../ui/modal/modal.component";
 
 @Component({
   selector: 'app-container',
   standalone: true,
-  imports: [TaskComponent, CommonModule, ModalComponent],
+  imports: [TaskComponent, CommonModule],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss'
 })
