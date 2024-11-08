@@ -1,0 +1,20 @@
+.btn-secudary {
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secudary{
+  background-color: #696968;
+  color: white;
+}
+
+.btn-secudary:hover {
+  background-color: #d8d8d8;
+}

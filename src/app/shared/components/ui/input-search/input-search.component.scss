@@ -1,0 +1,54 @@
+/* input-search.component.scss */
+.input-searh {
+  position: relative;
+  width: 240px;
+  height: 40px;
+  background-color: #ffffff;
+  border: 2px solid #d3d3d3;
+  border-radius: 10px;
+  padding: 0 15px;
+  font-size: 15px;
+  font-family: "Roboto", serif;
+  transition: all 0.3s ease;
+  margin-bottom: 35px;
+  top: 85px;
+  left: -35px;
+  outline: none;
+  animation: fadeInUp 1s ease-in-out;
+
+  &:focus {
+    border-color: #058af0;
+    box-shadow: 0 0 10px rgba(5, 138, 240, 0.6);
+    background-color: #f0f9ff;
+    transform: scale(1.05);
+  }
+
+  &::placeholder {
+    position: absolute;
+    color: #bbb;
+    font-style: italic;
+    transition: all 0.3s ease;
+    left: 34px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+    top: -15px;
+    font-size: 12px;
+  }
+}
+
+.input-searh:focus + img {
+  opacity: 5%;
+  top: -150px;
+}
+
+img {
+  position: absolute;
+  top: 327px;
+  left: 60px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}

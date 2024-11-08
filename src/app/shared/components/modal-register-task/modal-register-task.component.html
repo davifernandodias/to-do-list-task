@@ -3,17 +3,23 @@
     <span class="close" (click)="onClose()">×</span>
     <h2 class="modal-title">Cadastrar sua tarefa</h2>
     <form #taskForm="ngForm" (ngSubmit)="createTask(taskForm)" novalidate>
+      <!-- Nome da tarefa -->
       <div>
         <label for="taskDescription">Nome da tarefa:</label>
         <input
           type="text"
           id="taskDescription"
           class="input-task"
-          [value]="task"
-          disabled
+          [(ngModel)]="task"
+          name="task"
+          required
         />
+        <div *ngIf="task && task.trim().length === 0" class="error-message">
+          Nome da tarefa é obrigatório
+        </div>
       </div>
 
+      <!-- Valor -->
       <div>
         <label for="amount">Valor:</label>
         <input
@@ -26,10 +32,11 @@
           #costField="ngModel"
         />
         <div *ngIf="costField.invalid && costField.touched" class="error-message">
-          Cost is required
+          Valor é obrigatório
         </div>
       </div>
 
+      <!-- Data -->
       <div>
         <label for="dueDate">Informe a data:</label>
         <input
@@ -42,10 +49,11 @@
           #dueDateField="ngModel"
         />
         <div *ngIf="dueDateField.invalid && dueDateField.touched" class="error-message">
-          Todos os campos são necessários
+          A data é obrigatória
         </div>
       </div>
 
+      <!-- Botão de salvar -->
       <button class="btn-add" type="submit" [disabled]="taskForm.invalid">Salvar</button>
     </form>
   </div>

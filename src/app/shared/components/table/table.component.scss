@@ -1,223 +1,36 @@
-// Importação de estilo global
+@import '../../../../styles.scss'; // Caminho relativo desde a raiz do projeto
 
-
-
-/* Variáveis de cor */
-$clr-primary: #81d4fa;
-$clr-primary-light: #e1f5fe;
-$clr-primary-dark: #4fc3f7;
-$clr-gray100: #f9fbff;
-$clr-gray150: #f4f6fb;
-$clr-gray200: #eef1f6;
-$clr-gray300: #e1e5ee;
-$clr-gray400: #767b91;
-$clr-gray500: #4f546c;
-$clr-gray600: #2a324b;
-$clr-gray700: #161d34;
-$clr-pending: #fff0c2;
-$clr-pending-font: #a68b00;
-$clr-unpaid: #ffcdd2;
-$clr-unpaid-font: #c62828;
-$clr-paid: #c8e6c9;
-$clr-paid-font: #388e3c;
-$clr-link: #2962ff;
-
-$radius: 0.2rem;
-
-// Regras globais
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-// Animações
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-// Inputs
-.input-searh {
-  position: relative;
-  width: 240px;
-  height: 40px;
-  background-color: #ffffff;
-  border: 2px solid #d3d3d3;
-  border-radius: 10px;
-  padding: 0 15px;
-  font-size: 15px;
-  font-family: "Roboto", serif;
-  transition: all 0.3s ease;
-  margin-bottom: 35px;
-  top: 85px;
-  left: -35px;
-  outline: none;
-  animation: fadeInUp 1s ease-in-out;
-
-  &:focus {
-    border-color: #058AF0;
-    box-shadow: 0 0 10px rgba(5, 138, 240, 0.6);
-    background-color: #f0f9ff;
-    transform: scale(1.05);
-  }
-
-  &::placeholder {
-    position: absolute;
-    color: #bbb;
-    font-style: italic;
-    transition: all 0.3s ease;
-    left: 34px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  &:focus::placeholder {
-    opacity: 0;
-    top: -15px;
-    font-size: 12px;
-  }
-}
-
-// Imagem associada ao input de pesquisa
-.input-searh:focus + img {
-  opacity: 5%;
-  top: -150px;
-}
-
-img {
-  position: absolute;
-  top: 327px;
-  left: 60px;
-  transform: translateY(-50%);
-  transition: all 0.3s ease;
-}
-
-// Switch (iOS)
-.switch__container {
-  position: fixed;
-  width: 15px;
-  left: 860px;
-  top: 315px;
-}
-
-.switch {
-  visibility: hidden;
-  position: absolute;
-}
-
-.switch + label {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  user-select: none;
-}
-
-.switch--shadow + label {
-  width: 70px;
-  height: 35px;
-  background-color: #dddddd;
-  border-radius: 35px;
-}
-
-.switch--shadow + label:before,
-.switch--shadow + label:after {
-  display: block;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  bottom: 2px;
-  content: "";
-}
-
-.switch--shadow + label:before {
-  right: 2px;
-  background-color: #f1f1f1;
-  border-radius: 35px;
-  transition: background 0.4s;
-}
-
-.switch--shadow + label:after {
-  width: 30px;
-  height: 30px;
-  background-color: #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  transition: all 0.4s;
-}
-
-.switch--shadow:checked + label:before {
-  background-color: #058AF0;
-}
-
-.switch--shadow:checked + label:after {
-  transform: translateX(35px);
-}
-
-// Tabela
 table {
-  position: relative;
+  position: fixed;
   width: 100%;
+  left: 130px;
+  top: 345px;
   border-collapse: collapse;
   box-shadow: 0 5px 10px $clr-gray300;
   background-color: white;
-  text-align: left;
-  overflow: hidden;
-  left: 50px;
-  top: 60px;
   max-width: 800px;
   max-height: 1000px;
+  margin: 20px 0;
   overflow-y: auto;
-
+  
   thead {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    box-shadow: 0 5px 10px $clr-gray300;
-    background-color: white;
+    position: sticky; top: 0; z-index: 1; background-color: white;
   }
 
-  th {
+  th, td {
     padding: 1rem 2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    font-size: 0.7rem;
-    font-weight: 900;
+    text-align: center;
   }
 
-  td {
-    padding: 1rem 2rem;
-  }
-
-  a {
-    text-decoration: none;
-    color: $clr-link;
-  }
-
-  .highlight {
-    color: red;
-  }
-
-  .action {
-    padding-right: 10px;
-  }
-
-  .amount {
-    text-align: right;
-  }
-
-  tr:nth-child(even) {
-    background-color: $clr-gray150;
-  }
+  th { text-transform: uppercase; letter-spacing: 0.1rem; font-size: 0.7rem; font-weight: 900; }
+  td a { text-decoration: none; color: $clr-link; }
+  tr:nth-child(even) { background-color: $clr-gray150; }
+  .highlight { color: red; }
 
   tbody {
     display: block;
@@ -225,143 +38,56 @@ table {
     overflow-y: auto;
   }
 
-  tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-  }
+  tr { display: table; width: 100%; table-layout: fixed; }
 }
 
 // Botões
-.button-container {
-  display: flex;
-  gap: 10px;
+
+app-button-edit{
   position: relative;
-  left: -60px;
+  left: -40px;
+}
+app-button{
+  position: relative;
+  left: -35px;
 }
 
-.btn {
-  font-size: 14px;
-  padding: 10px 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
 
-.edit-btn {
-  background-color: #f39c12;
-  color: white;
-}
-
-.delete-btn {
-  background-color: #e74c3c;
-  color: white;
-}
-
-/* Efeito de hover */
-.edit-btn:hover {
-  background-color: #e67e22;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-}
-
-.delete-btn:hover {
-  background-color: #c0392b;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-}
-
-.edit-btn:focus, .delete-btn:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-}
-
-.edit-btn:active, .delete-btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
 
 // Modal de Confirmação
 .confirmation-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 100%;
-  border-radius: 10px;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* Estilos gerais da tabela */
-table {
-  position: relative;
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
-  text-align: left;
-  max-width: 800px;
-  max-height: 1000px;
-  overflow-y: auto;
-  margin: 20px 0; /* Adicionando espaçamento */
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5); padding: 100%; border-radius: 10px; z-index: 1000;
+  display: flex; justify-content: center; align-items: center;
 }
 
-thead {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: white;
+.modal-content {
+  background-color: #fff; padding: 20px; width: 250px; border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); text-align: center;
 }
 
-th {
-  padding: 1rem 2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  font-size: 0.7rem;
-  font-weight: 900;
-  text-align: center;
-}
-
-td {
-  padding: 1rem 2rem;
-  text-align: center;
-}
-
-/* Estilos para o item sendo arrastado */
-cdk-drag-preview {
-  /* Estilo do quadradinho arrastado */
-  width: auto;
-  height: auto;
-  background-color: #fff;
-  border: 2px solid #058AF0; /* Cor do contorno */
-  border-radius: 5px; /* Bordas arredondadas */
-  box-shadow: 0 10px 20px rgba(0, 138, 240, 0.2); /* Sombra suave */
-  transform: scale(1.05); /* Efeito de aumento */
-  transition: transform 0.3s ease; /* Transição suave ao ser arrastado */
-  z-index: 1000; /* Para garantir que fique acima dos outros itens */
-}
-
-/* Estilos para o item de drag placeholder (onde o item será colocado) */
-cdk-drag-placeholder {
-  opacity: 0.5; /* Tornando o item fantasma mais sutil */
-  background-color: #f0f9ff; /* Cor de fundo suave */
+// Estilos para o item sendo arrastado
+cdk-drag-preview, cdk-drag-placeholder {
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 138, 240, 0.2); /* Sombra suave */
+  box-shadow: 0 10px 20px rgba(0, 138, 240, 0.2);
+}
+
+cdk-drag-preview {
+  background-color: #fff;
+  border: 2px solid $clr-primary;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+cdk-drag-placeholder {
+  opacity: 0.5;
+  background-color: #f0f9ff;
 }
 
 cdk-drop {
   transition: background-color 0.3s ease;
-}
-
-cdk-drop:active {
-  background-color: #eaf5ff;
+  &:active { background-color: #eaf5ff; }
 }
 
 tr.cdk-drag {
@@ -369,71 +95,4 @@ tr.cdk-drag {
   transition: transform 0.2s ease;
 }
 
-tr.cdk-drag-preview {
-  background-color: #f9f9f9;
-  transform: scale(1.02);
-}
-
-tr.cdk-drag-dragging {
-  transform: scale(1.02);
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  width: 250px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.modal-content h3 {
-  padding: 20px;
-}
-
-.modal-buttons {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-button {
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-danger {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: #c0392b;
-}
-
-.btn-secondary {
-  background-color: #7f8c8d;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #95a5a6;
-}
-
-.btn-sim {
-  position: fixed;
-  padding-left: 50px;
-}
-
-// Estilos para imagem na seção de título
-.title-info-ord img {
-  position: fixed;
-  left: 817px;
-  top: 331px;
-  width: 40px;
-  height: 40px;
-}
+tr.cdk-drag-dragging { transform: scale(1.02); }

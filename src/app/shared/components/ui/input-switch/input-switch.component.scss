@@ -1,0 +1,69 @@
+// Switch (iOS)
+.switch__container {
+  position: fixed;
+  width: 15px;
+  left: 860px;
+  top: 315px;
+}
+
+.switch {
+  visibility: hidden;
+  position: absolute;
+}
+
+.switch + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.switch--shadow + label {
+  width: 70px;
+  height: 35px;
+  background-color: #dddddd;
+  border-radius: 35px;
+}
+
+.switch--shadow + label:before,
+.switch--shadow + label:after {
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  content: "";
+}
+
+.switch--shadow + label:before {
+  right: 2px;
+  background-color: #f1f1f1;
+  border-radius: 35px;
+  transition: background 0.4s;
+}
+
+.switch--shadow + label:after {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+
+.switch--shadow:checked + label:before {
+  background-color: #058AF0;
+}
+
+.switch--shadow:checked + label:after {
+  transform: translateX(35px);
+}
+// Estilos para imagem na seção de título
+.title-info-ord img {
+  position: fixed;
+  left: 817px;
+  top: 311px;
+  width: 40px;
+  height: 40px;
+}

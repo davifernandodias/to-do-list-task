@@ -5,12 +5,17 @@ import { ModalEditTaskComponent } from '../modal-edit-task/modal-edit-task.compo
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TaskService } from '../../../services/task.service';
 import { Tarefa } from '../../../../Tarefa';
-import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';  // Importando o DragDropModule
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
+import { InputSwitchComponent } from "../ui/input-switch/input-switch.component";
+import { InputSearchComponent } from "../ui/input-search/input-search.component";
+import { ButtonComponent } from "../ui/button/button.component";
+import { ButtonDeafultComponent } from "../ui/button-deafult/button-deafult.component";
+import { ButtonEditComponent } from "../ui/button-edit/button-edit.component";  // Importando o novo componente de botão
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [FormsModule, CommonModule, ModalEditTaskComponent, DragDropModule],  // Adicionando DragDropModule
+  imports: [FormsModule, CommonModule, ModalEditTaskComponent, DragDropModule, InputSwitchComponent, InputSearchComponent, ButtonComponent, ButtonDeafultComponent, ButtonEditComponent],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
@@ -20,10 +25,10 @@ export class TableComponent implements OnInit {
   searchText: string = '';
   data: Tarefa[] = [];
   filteredTasks: Tarefa[] = [];
-  sortDescending: boolean = false;
+  sortDescending: boolean = false; // Flag de ordenação
   isEditModalVisible: boolean = false;
   selectedTask: Tarefa | null = null;
-  isDeleteModalVisible: boolean = false;
+  isDeleteModalVisible: boolean = false;  // Variável para controle da visibilidade do modal de exclusão
 
   constructor(private taskService: TaskService) {}
 
@@ -59,21 +64,30 @@ export class TableComponent implements OnInit {
   }
 
   toggleSort(event: Event) {
-    this.sortDescending = (event.target as HTMLInputElement).checked;
-    this.applyFilter();
+    this.sortDescending = (event.target as HTMLInputElement).checked; // Altera a flag de ordenação
+    this.applyFilter(); // Aplica o filtro e ordenação
   }
 
-  onDeleteConfirmation(tarefa: Tarefa) {
-    this.selectedTask = tarefa;
-    this.isDeleteModalVisible = true;
+  onCloseButtonClick(item: Tarefa) {
+    // Sua lógica para fechar ou fazer algo com a tarefa
+    console.log('Fechar tarefa:', item);
+    this.isEditModalVisible = false;
+    this.selectedTask = null;
   }
 
+  // Função para abrir o modal de exclusão
+  openDeleteModal(task: Tarefa): void {
+    this.selectedTask = task;  // Armazena a tarefa selecionada
+    this.isDeleteModalVisible = true;  // Exibe o modal de exclusão
+  }
+
+  // Função para excluir a tarefa
   deleteTask(tarefa: Tarefa | null) {
     if (tarefa) {
       this.taskService.deleteTask(tarefa).subscribe({
         next: () => {
           this.taskService.refreshTasks();
-          this.closeDeleteModal();
+          this.closeDeleteModal();  // Fecha o modal após a exclusão
           this.matSnackBar.open('Tarefa removida com sucesso', 'Ok', {
             duration: 3000,
             horizontalPosition: 'right',
@@ -88,11 +102,13 @@ export class TableComponent implements OnInit {
     }
   }
 
+  // Função para fechar o modal de exclusão
   closeDeleteModal() {
     this.isDeleteModalVisible = false;
     this.selectedTask = null;
   }
 
+  // Função para abrir o modal de edição
   openEditModal(task: Tarefa): void {
     this.selectedTask = task;
     this.isEditModalVisible = true;
@@ -112,18 +128,15 @@ export class TableComponent implements OnInit {
     this.filteredTasks.splice(prevIndex, 1);
     this.filteredTasks.splice(currentIndex, 0, event.item.data);
 
-    // Atualizando o campo de ordem de cada tarefa após o rearranjo
+    // Atualizando a ordem das tarefas
     this.filteredTasks.forEach((task, index) => {
-      task.serialOrdernacao = index + 1; // Atualizando o serialOrdernacao com base na nova posição
+      task.serialOrdernacao = index + 1;  // Atualizando o serialOrdernacao
     });
 
     // Atualizando a ordem das tarefas no servidor (db.json)
     this.taskService.updateTasksOrder(this.filteredTasks).subscribe({
       next: (updatedTasks) => {
-        // Atualizando localmente após a resposta do backend
         this.filteredTasks = updatedTasks;
-
-        // Mensagem de sucesso
         this.matSnackBar.open('Ordem das tarefas atualizada com sucesso!', 'Ok', {
           duration: 3000,
           horizontalPosition: 'right',
@@ -135,5 +148,10 @@ export class TableComponent implements OnInit {
         console.error('Erro ao atualizar a ordem das tarefas:', err);
       }
     });
+  }
+
+  onSearchTextChanged(searchText: string) {
+    this.searchText = searchText;  // Atualiza o texto de pesquisa
+    this.applyFilter();  // Aplica o filtro
   }
 }

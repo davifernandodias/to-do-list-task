@@ -1,12 +1,6 @@
-<!-- input de pesquisa -->
-<input type="text" class="input-searh" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Escreva nome da sua tarefa..." />
-<img src="../../../../assets/svg/search-icon.svg" alt="search-icon">
+<app-input-search (searchChanged)="onSearchTextChanged($event)"></app-input-search>
 
-<div class="switch__container">
-  <input id="switch-shadow" class="switch switch--shadow" type="checkbox" (change)="toggleSort($event)">
-  <label for="switch-shadow"></label>
-</div>
-<div class="title-info-ord"><img src="../../../../assets/img/ordenacao.png" alt=""></div>
+<app-input-switch (change)="toggleSort($event)"></app-input-switch>
 
 <table cdkDropList (cdkDropListDropped)="drop($event)">
   <thead>
@@ -25,9 +19,9 @@
       <td [ngClass]="{'highlight': item.valor >= 1000}">{{ item.valor | currency: 'BRL' : 'symbol' : '1.0-0' }}</td>
       <td>{{ item.dataMaxima }}</td>
       <td class="d-flex gap-3">
-        <div class="button-container">
-          <button class="btn btn-warning btn-sm edit-btn" (click)="openEditModal(item)">Editar</button>
-          <button class="btn btn-danger btn-sm delete-btn" (click)="onDeleteConfirmation(item)">Excluir</button>
+        <div class="button-container" style="display: flex;">
+          <app-button-edit (click)="openEditModal(item)">Editar</app-button-edit>
+          <app-button (click)="openDeleteModal(item)">Excluir</app-button>
         </div>
       </td>
     </tr>
@@ -40,12 +34,13 @@
   (closeModal)="closeEditModal()">
 </app-modal-edit-task>
 
+<!-- Modal de Confirmação de Exclusão -->
 <div *ngIf="isDeleteModalVisible" class="confirmation-modal">
   <div class="modal-content">
     <h3>Deseja realmente excluir esta tarefa?</h3>
     <div class="modal-buttons">
-      <button class="btn btn-danger" id="btn-sim" (click)="deleteTask(selectedTask)">Sim</button>
-      <button class="btn btn-secondary" (click)="closeDeleteModal()">Não</button>
+      <app-button (click)="deleteTask(selectedTask)">Sim</app-button>
+      <app-button-deafult (click)="closeDeleteModal()" >Não</app-button-deafult>
     </div>
   </div>
 </div>

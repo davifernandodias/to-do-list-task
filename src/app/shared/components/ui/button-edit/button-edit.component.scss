@@ -1,0 +1,29 @@
+
+.btn {
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-btn {
+  background-color: #f39c12;
+  color: white;
+}
+
+
+
+.edit-btn:focus, .delete-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+.edit-btn:active, .delete-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

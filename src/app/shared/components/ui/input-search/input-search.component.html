@@ -1,0 +1,9 @@
+<!-- input-search.component.html -->
+<input
+  type="text"
+  class="input-searh"
+  [(ngModel)]="searchText"
+  (input)="onSearchChange()"
+  placeholder="Escreva nome da sua tarefa..."
+/>
+<img src="../../../../assets/svg/search-icon.svg" alt="search-icon" />

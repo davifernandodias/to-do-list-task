@@ -40,15 +40,13 @@ export class ModalRegisterTaskComponent {
       // Verifica se já existe uma tarefa com o mesmo nome
       this.taskService.checkTaskExists(this.task).subscribe((exists) => {
         if (exists) {
-          // Exibe a mensagem de erro com a classe CSS para erro (cor vermelha)
           this.matSnackBar.open('Não é possível criar tarefas com o mesmo nome!', 'Ok', {
             duration: 3000,
             horizontalPosition: 'right',
             verticalPosition: 'top',
-            panelClass: ['error-snackbar'] // Aplica a classe de erro
+            panelClass: ['error-snackbar']
           });
         } else {
-          // Cria a tarefa se não existir
           const newTask: Tarefa = {
             tarefaNome: this.task,
             valor: this.cost,
@@ -64,15 +62,14 @@ export class ModalRegisterTaskComponent {
             this.task = '';
             this.cost = 0;
             this.dueDate = '';
-
             form.reset();
 
-            // Exibe a mensagem de sucesso com a classe CSS para sucesso (cor verde)
+            // Exibe a mensagem de sucesso
             this.matSnackBar.open('Tarefa salva com sucesso', 'Ok', {
               duration: 3000,
               horizontalPosition: 'right',
               verticalPosition: 'top',
-              panelClass: ['success-snackbar'] // Aplica a classe de sucesso
+              panelClass: ['success-snackbar']
             });
           });
         }
