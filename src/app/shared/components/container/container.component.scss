@@ -1,4 +1,7 @@
-.container { position: relative; }
+
+.container {
+  position: relative;
+}
 
 .circle-container {
   width: 1430px;
@@ -11,50 +14,61 @@
   z-index: 1;
   transform: translateX(-50%);
   transition: all 1.5s ease-in-out;
-  
-  &.move-center {
-    width: 100px;
-    height: 100px;
-    top: 700px;
-    left: 1100px;
-    transform: translate(-50%, -50%);
-  }
-
-  &.move-expanded {
-    width: 1430px;
-    height: 1430px;
-    top: 900px;
-    left: 1800px;
-    transform: translate(-50%, -50%);
-  }
-
-  &.fade-out {
-    opacity: 0;
-    transform: translateY(-30px);
-    transition: opacity 1.3s ease-in-out, transform 1.3s ease-in-out, z-index 4s ease-out;
-    z-index: 0;
-  }
 }
 
-.title, .title-two {
+.circle-container.move-center {
+  width: 100px;
+  height: 100px;
+  top: 700px;
+  left: 1100px;
+  transform: translate(-50%, -50%);
+}
+
+.circle-container.move-expanded {
+  width: 1430px;
+  height: 1430px;
+  top: 900px;
+  left: 1800px;
+  transform: translate(-50%, -50%);
+}
+
+.title {
   position: relative;
   font-family: "Roboto", serif;
   font-weight: 700;
+  letter-spacing: 20px;
+  left: 120px;
   color: white;
   z-index: 1;
-  letter-spacing: 20px;
+  font-size: 105px;
+  top: 180px;
   transition: opacity 1.5s ease-out, z-index 1s ease-out;
-  
-  &.fade-out {
-    opacity: 0;
-    transform: translateY(-30px);
-    transition: opacity 1.3s ease-in-out, transform 1.3s ease-in-out, z-index 4s ease-out;
-    z-index: 0;
-  }
 }
 
-.title { font-size: 105px; top: 180px; left: 120px; }
-.title-two { font-size: 105px; top: 270px; left: 120px; letter-spacing: 15px; }
+.title-two {
+  position: relative;
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  letter-spacing: 15px;
+  color: white;
+  left: 120px;
+  z-index: 1;
+  font-size: 105px;
+  top: 270px;
+  transition: opacity 1.5s ease-out, z-index 1s ease-out;
+}
+
+/* Transição mais suave para o desaparecimento dos títulos */
+.title.fade-out,
+.title-two.fade-out
+.circle-container
+{
+  opacity: 0;
+  transform: translateY(-30px); /* Move para cima para um desaparecimento mais fluido */
+  transition: opacity 1.3s ease-in-out, transform 1.3s ease-in-out, z-index 4s ease-out;
+  z-index: 0; /* Garante que eles saiam da frente */
+}
+
 
 .button {
   position: relative;
@@ -70,27 +84,28 @@
   z-index: 100000000000;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  
-  &:hover {
-    background-color: #6A0DAD;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    transform: translateY(-5px);
-  }
+}
 
-  &.shrink {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.5s ease-in-out;
+.button:hover {
+  background-color: #6A0DAD;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
 
-    p, .arrow-img {
-      opacity: 0;
-      transform: translateX(20px);
-      transition: opacity 0.5s, transform 0.5s ease-in-out;
-    }
-  }
+.button.shrink {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  pointer-events: none; /* Impede o clique enquanto encolhe */
+}
+
+.button.shrink p,
+.button.shrink .arrow-img {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s, transform 0.5s ease-in-out;
 }
 
 p {
@@ -103,7 +118,10 @@ p {
   top: 5px;
 }
 
-.arrow-img { position: relative; left: 50px; }
+.arrow-img {
+  position: relative;
+  left: 50px;
+}
 
 .illustre-img {
   position: relative;
@@ -113,31 +131,38 @@ p {
   top: 90px;
   animation: float 3s ease-in-out infinite;
   transition: opacity 1s ease-out, transform 1s ease-out;
-  
-  &.fade-out {
-    opacity: 0;
-    transform: translateX(100vw);
-  }
+}
+
+.illustre-img.fade-out {
+  opacity: 0;
+  transform: translateX(100vw);
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .app-task {
-  opacity: 0;
-  transform: translateX(100%) translateY(50%);
-  transition: opacity 50s ease, transform 50s ease;
-  
-  &.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  animation: slideIn 5s ease-out forwards;
+  opacity: 0; /* Começa invisível */
+  transform: translateX(100%);  /* Começa fora da tela à direita */
+  transform: translateY(50%);  /* Começa fora da tela à direita */
+  transition: opacity 50s ease, transform 50s ease; /* Anima a opacidade e o movimento */
 }
 
+.app-task.visible {
+  opacity: 1; /* Torna visível */
+  transform: translateX(0); /* Move para a posição original */
+}
+
+/* Animação suave usando @keyframes (opcional, caso queira um efeito mais controlado) */
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -145,7 +170,17 @@ p {
   }
   50% {
     opacity: 1;
-    transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0); /* Meio da animação: posição final, totalmente visível */
   }
-  100% { opacity: 1; transform: translateX(0); }
+  80% {
+    opacity: 1; /* Mantém visível por mais tempo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.app-task {
+  animation: slideIn 5s ease-out forwards; /* Animação suave com atraso */
 }
