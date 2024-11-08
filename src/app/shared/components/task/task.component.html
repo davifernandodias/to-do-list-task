@@ -1,20 +1,20 @@
 <section class="container-taks">
   <div class="content-text">
-    <h1 class="sub-title-decline">Application to-do-list</h1>
+    <h1 class="sub-title-decline">Sistema de Agenda</h1>
     <h2 class="sub-title-decline-two">web</h2>
-    <h2 class="title">CREATE YOUR TASK</h2>
+    <h2 class="title">GERENCIE SUAS TAREFAS</h2>
   </div>
   <form action="" class="form-send-task">
     <input
       type="text"
-      placeholder="What do you need to write down?"
+      placeholder="Qual nome da sua tarefa?"
       class="input-task"
       [(ngModel)]="taskDescription"
       name="taskDescription"
       required
     >
   </form>
-  <button class="btn-add" (click)="openModal()">ADVANCE</button>
+  <button class="btn-add" (click)="openModal()">Continuar</button>
 
   <!-- Modal -->
   <app-modal-register-task

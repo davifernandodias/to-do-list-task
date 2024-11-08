@@ -111,27 +111,6 @@
       "valor": 450,
       "dataMaxima": "2024-09-25",
       "serialOrdernacao": 16
-    },
-    {
-      "id": "20cd",
-      "tarefaNome": "Limpar o telhado",
-      "valor": 200,
-      "dataMaxima": "2024-09-27",
-      "serialOrdernacao": 17
-    },
-    {
-      "id": "21ef",
-      "tarefaNome": "Organizar garagem",
-      "valor": 250,
-      "dataMaxima": "2024-09-30",
-      "serialOrdernacao": 18
-    },
-    {
-      "id": "22gh",
-      "tarefaNome": "Verificar encanamento",
-      "valor": 180,
-      "dataMaxima": "2024-10-03",
-      "serialOrdernacao": 19
     }
   ]
 }

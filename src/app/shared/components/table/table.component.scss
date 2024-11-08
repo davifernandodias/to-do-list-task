@@ -1,5 +1,7 @@
+// Importação de estilo global
 @import '../../../../styles.scss';
 
+// Regras globais
 *,
 *::before,
 *::after {
@@ -8,10 +10,22 @@
   padding: 0;
 }
 
-/* Estilos gerais do input */
+// Animações
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Inputs
 .input-searh {
   position: relative;
-  width: 190px;
+  width: 240px;
   height: 40px;
   background-color: #ffffff;
   border: 2px solid #d3d3d3;
@@ -23,45 +37,53 @@
   margin-bottom: 35px;
   top: 85px;
   left: -35px;
-  outline: none; /* Remover borda do input quando em foco */
+  outline: none;
+  animation: fadeInUp 1s ease-in-out;
 
-  /* Foco no input */
   &:focus {
     border-color: #058AF0;
     box-shadow: 0 0 10px rgba(5, 138, 240, 0.6);
-    background-color: #f0f9ff; /* Cor de fundo quando em foco */
-    transform: scale(1.05); /* Efeito de aumento ao focar */
+    background-color: #f0f9ff;
+    transform: scale(1.05);
   }
 
-  /* Efeito de placeholder */
   &::placeholder {
     position: absolute;
     color: #bbb;
     font-style: italic;
     transition: all 0.3s ease;
-    left: 34px; /* Ajuste para o alinhamento do placeholder */
-    top: 50%; /* Centraliza verticalmente */
+    left: 34px;
+    top: 50%;
     transform: translateY(-50%);
   }
 
-  /* Quando o input está em foco, o placeholder sobe */
   &:focus::placeholder {
     opacity: 0;
-    top: -15px; /* Ajuste para o placeholder subir */
-    font-size: 12px; /* Reduz o tamanho do placeholder quando sobe */
+    top: -15px;
+    font-size: 12px;
   }
 }
 
-/* Animação para o input aparecer de forma gradual */
-.input-searh {
-  animation: fadeInUp 1s ease-in-out;
+// Imagem associada ao input de pesquisa
+.input-searh:focus + img {
+  opacity: 5%;
+  top: -150px;
 }
-/* Estilo iOS */
+
+img {
+  position: absolute;
+  top: 327px;
+  left: 60px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+// Switch (iOS)
 .switch__container {
   position: fixed;
   width: 15px;
   left: 860px;
-  top: 315px;  /* Diminui o tamanho da área do switch */
+  top: 315px;
 }
 
 .switch {
@@ -78,18 +100,18 @@
 }
 
 .switch--shadow + label {
-  width: 70px;  /* Tamanho do switch */
-  height: 35px;  /* Tamanho da altura */
+  width: 70px;
+  height: 35px;
   background-color: #dddddd;
-  border-radius: 35px;  /* Ajuste de acordo com o tamanho */
+  border-radius: 35px;
 }
 
 .switch--shadow + label:before,
 .switch--shadow + label:after {
   display: block;
   position: absolute;
-  top: 2px;  /* Ajuste o espaçamento superior */
-  left: 2px;  /* Ajuste o espaçamento esquerdo */
+  top: 2px;
+  left: 2px;
   bottom: 2px;
   content: "";
 }
@@ -97,55 +119,28 @@
 .switch--shadow + label:before {
   right: 2px;
   background-color: #f1f1f1;
-  border-radius: 35px;  /* Ajuste conforme o novo tamanho */
+  border-radius: 35px;
   transition: background 0.4s;
 }
 
 .switch--shadow + label:after {
-  width: 30px;  /* Ajuste a largura do círculo deslizante */
-  height: 30px;  /* Ajuste a altura do círculo */
+  width: 30px;
+  height: 30px;
   background-color: #fff;
-  border-radius: 50%;  /* Forma circular */
+  border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.4s;
 }
 
 .switch--shadow:checked + label:before {
-  background-color: #058AF0;  /* Cor quando está ativado */
+  background-color: #058AF0;
 }
 
 .switch--shadow:checked + label:after {
-  transform: translateX(35px);  /* Desloca o círculo para a direita */
+  transform: translateX(35px);
 }
 
-
-/* Ajuste na imagem para subir junto com o placeholder */
-img {
-  position: absolute; /* Para a imagem ficar sobre o input */
-  top: 327px; /* Posição inicial da imagem, centralizada verticalmente */
-  left: 60px; /* Ajuste da posição horizontal */
-  transform: translateY(-50%); /* Para centralizar verticalmente a imagem */
-  transition: all 0.3s ease;
-}
-
-/* Quando o input está em foco, a imagem sobe junto com o placeholder */
-.input-searh:focus + img {
-  opacity: 5%;
-  top: -150px /* Ajuste para a imagem subir junto com o placeholder */
-}
-
-/* Animação de fade-in para o input */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+// Tabela
 table {
   position: relative;
   width: 100%;
@@ -185,7 +180,6 @@ table {
     color: $clr-link;
   }
 
-  /* Definindo a classe 'highlight' para estilização chamativa */
   .highlight {
     color: red;
   }
@@ -205,7 +199,7 @@ table {
   tbody {
     display: block;
     max-height: 400px;
-    overflow-y: auto; /* Ativa o scroll */
+    overflow-y: auto;
   }
 
   tr {
@@ -215,26 +209,24 @@ table {
   }
 }
 
-
-/* Container para os botões, utilizando flexbox para alinhamento */
+// Botões
 .button-container {
   display: flex;
-  gap: 10px; /* Espaço entre os botões */
+  gap: 10px;
   position: relative;
   left: -60px;
 }
 
-/* Estilo base dos botões */
 .btn {
   font-size: 14px;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border-radius: 5px;
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease-in-out; /* Transição suave */
-  border: none; /* Remover borda padrão */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: all 0.3s ease-in-out;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .edit-btn {
@@ -249,25 +241,98 @@ table {
 
 /* Efeito de hover */
 .edit-btn:hover {
-  background-color: #e67e22; /* Cor mais escura para o efeito */
-  transform: translateY(-3px); /* Levanta o botão */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Sombra mais forte no hover */
+  background-color: #e67e22;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .delete-btn:hover {
-  background-color: #c0392b; /* Cor mais escura para o efeito */
-  transform: translateY(-3px); /* Levanta o botão */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Sombra mais forte no hover */
+  background-color: #c0392b;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Efeito de foco (quando o botão está em foco) */
 .edit-btn:focus, .delete-btn:focus {
-  outline: none; /* Remove o outline padrão */
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Adiciona brilho ao foco */
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
 
-/* Efeito de clique (quando pressionado) */
 .edit-btn:active, .delete-btn:active {
-  transform: translateY(1px); /* Botão "afunda" um pouco */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra mais suave ao clicar */
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+// Modal de Confirmação
+.confirmation-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 100%;
+  border-radius: 10px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.modal-content h3 {
+  padding: 20px;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.btn-secondary {
+  background-color: #7f8c8d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #95a5a6;
+}
+
+.btn-sim {
+  position: fixed;
+  padding-left: 50px;
+}
+
+// Estilos para imagem na seção de título
+.title-info-ord img {
+  position: fixed;
+  left: 817px;
+  top: 331px;
+  width: 40px;
+  height: 40px;
 }

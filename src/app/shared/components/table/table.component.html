@@ -1,46 +1,50 @@
 <!-- input de pesquisa -->
-<input type="text" class="input-searh" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Type name task..." />
-
+<input type="text" class="input-searh" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Escreva nome da sua tarefa..." />
 <img src="../../../../assets/svg/search-icon.svg" alt="search-icon">
 
 <div class="switch__container">
   <input id="switch-shadow" class="switch switch--shadow" type="checkbox" (change)="toggleSort($event)">
   <label for="switch-shadow"></label>
 </div>
-<!-- Tabela -->
+<div class="title-info-ord"><img src="../../../../assets/img/ordenacao.png" alt=""></div>
 <table>
   <thead>
     <tr>
       <th>Id</th>
-      <th>Name</th>
-      <th>Cost</th>
-      <th>Max Date</th>
-      <th>Actions</th>
+      <th>Nome da tarefa</th>
+      <th>Valor</th>
+      <th>Data máxima</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of filteredTasks">
       <td><a href="#">{{ item.id }}</a></td>
       <td>{{ item.tarefaNome }}</td>
-      <td [ngClass]="{'highlight': item.valor > 1000}">
-        {{ item.valor | currency: 'BRL' : 'symbol' : '1.0-0' }}
-      </td>
+      <td [ngClass]="{'highlight': item.valor >= 1000}">{{ item.valor | currency: 'BRL' : 'symbol' : '1.0-0' }}</td>
       <td>{{ item.dataMaxima }}</td>
       <td class="d-flex gap-3">
         <div class="button-container">
-          <!-- Botão Editar que chama a função openEditModal -->
-          <button class="btn btn-warning btn-sm edit-btn" (click)="openEditModal(item)">Edit</button>
-          <button class="btn btn-danger btn-sm delete-btn" (click)="onDelete(item)">Delete</button>
+          <button class="btn btn-warning btn-sm edit-btn" (click)="openEditModal(item)">Editar</button>
+          <button class="btn btn-danger btn-sm delete-btn" (click)="onDeleteConfirmation(item)">Excluir</button>
         </div>
       </td>
     </tr>
   </tbody>
 </table>
 
-<!-- Modal Edit Task -->
 <app-modal-edit-task
   [task]="selectedTask"
   [isVisible]="isEditModalVisible"
   (closeModal)="closeEditModal()">
 </app-modal-edit-task>
 
+<div *ngIf="isDeleteModalVisible" class="confirmation-modal">
+  <div class="modal-content">
+    <h3>Deseja realmente excluir esta tarefa?</h3>
+    <div class="modal-buttons">
+      <button class="btn btn-danger" id="btn-sim" (click)="deleteTask(selectedTask)">Sim</button>
+      <button class="btn btn-secondary" (click)="closeDeleteModal()">Não</button>
+    </div>
+  </div>
+</div>
