@@ -5,9 +5,9 @@ import { ContainerComponent } from './shared/components/container/container.comp
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ContainerComponent],
+  imports: [RouterOutlet, ContainerComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'to-do-list-task';

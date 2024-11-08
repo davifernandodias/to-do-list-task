@@ -7,7 +7,7 @@ import { Tarefa } from '../../Tarefa';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'db-processo-seletivo-task-processo-dfc.vercel.app/tasks';
+  private apiUrl = 'https://db-processo-seletivo-task-processo-dfc.vercel.app/tasks'; // Corrigido com HTTPS
   private taskSubject = new BehaviorSubject<Tarefa[]>([]);
   tasks$ = this.taskSubject.asObservable();
 
@@ -53,7 +53,6 @@ export class TaskService {
       })
     );
   }
-
 
   refreshTasks(): void {
     this.getTasks().subscribe((tasks) => {
