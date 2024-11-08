@@ -29,9 +29,9 @@ export class ModalRegisterTaskComponent {
     this.closeModal.emit();
   }
 
+  // Método para gerar ID aleatório (se necessário)
   generateRandomId(): string {
-    const randomId = Math.floor(Math.random() * 100000);
-    return randomId.toString();
+    return Math.floor(Math.random() * 100000).toString();
   }
 
   // Método de criação da tarefa
@@ -40,6 +40,7 @@ export class ModalRegisterTaskComponent {
       // Verifica se já existe uma tarefa com o mesmo nome
       this.taskService.checkTaskExists(this.task).subscribe((exists) => {
         if (exists) {
+          // Exibe mensagem de erro se a tarefa já existir
           this.matSnackBar.open('Não é possível criar tarefas com o mesmo nome!', 'Ok', {
             duration: 3000,
             horizontalPosition: 'right',
@@ -47,6 +48,7 @@ export class ModalRegisterTaskComponent {
             panelClass: ['error-snackbar']
           });
         } else {
+          // Se não existir, cria a nova tarefa
           const newTask: Tarefa = {
             tarefaNome: this.task,
             valor: this.cost,
@@ -55,21 +57,30 @@ export class ModalRegisterTaskComponent {
           };
 
           this.taskService.addTask(newTask).subscribe(() => {
+            // Atualiza a lista de tarefas após salvar
             this.taskService.refreshTasks();
-            this.onClose();
+            this.onClose(); // Fecha o modal
 
-            // Limpar os campos após salvar a tarefa
+            // Limpa os campos após salvar a tarefa
             this.task = '';
             this.cost = 0;
             this.dueDate = '';
             form.reset();
 
-            // Exibe a mensagem de sucesso
+            // Exibe mensagem de sucesso
             this.matSnackBar.open('Tarefa salva com sucesso', 'Ok', {
               duration: 3000,
               horizontalPosition: 'right',
               verticalPosition: 'top',
               panelClass: ['success-snackbar']
+            });
+          }, (error) => {
+            // Exibe erro em caso de falha na criação da tarefa
+            this.matSnackBar.open('Ocorreu um erro ao salvar a tarefa!', 'Ok', {
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+              panelClass: ['error-snackbar']
             });
           });
         }

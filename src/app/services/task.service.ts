@@ -7,23 +7,22 @@ import { Tarefa } from '../../Tarefa';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'https://db-processo-seletivo-task-processo-dfc.vercel.app/tasks'; // URL da API hospedada
+  private apiUrl = 'https://db-processo-seletivo-task-processo-dfc.vercel.app/tasks';
   private taskSubject = new BehaviorSubject<Tarefa[]>([]);
   tasks$ = this.taskSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  // Método para obter as tarefas
+
   getTasks(): Observable<Tarefa[]> {
     return this.http.get<Tarefa[]>(this.apiUrl); // Fazendo GET para a API remota
   }
 
-  // Método para verificar se a tarefa já existe
   checkTaskExists(taskName: string): Observable<boolean> {
-    return this.http.get<Tarefa[]>(`${this.apiUrl}?tarefaNome=${taskName}`).pipe(  // Corrigido a interpolação
+    return this.http.get<Tarefa[]>(`${this.apiUrl}?tarefaNome=${taskName}`).pipe(
       switchMap((tasks) => {
         return new Observable<boolean>((observer) => {
-          observer.next(tasks.length > 0); // Retorna true se existir pelo menos uma tarefa com o mesmo nome
+          observer.next(tasks.length > 0);
           observer.complete();
         });
       })
